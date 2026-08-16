@@ -235,3 +235,67 @@
 
 </body>
 </html>
+<!-- AUDIO TRACKER -->
+<audio id="bgMusic" loop>
+  <source src="audio/PlayPulseSoundtrack.mp3" type="audio/mpeg">
+</audio>
+
+<!-- MUSIC CONTROLLER WITH MEMORY -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const music = document.getElementById("bgMusic");
+    const toggleBtn = document.getElementById("soundControl");
+    const soundIcon = document.getElementById("soundIcon");
+    const soundText = document.getElementById("soundText");
+
+    // 1. Check if music was playing on the last page and where it left off
+    const savedTime = localStorage.getItem("musicTime");
+    const isMusicPlaying = localStorage.getItem("musicPlaying") === "true";
+
+    if (music) {
+      if (savedTime) {
+        music.currentTime = parseFloat(savedTime);
+      }
+      
+      // If it was playing before, automatically resume it on this new page
+      if (isMusicPlaying) {
+        music.play().then(() => {
+          updateUI(true);
+        }).catch(() => {
+          localStorage.setItem("musicPlaying", "false");
+          updateUI(false);
+        });
+      } else {
+        updateUI(false);
+      }
+    }
+
+    function updateUI(playing) {
+      if (!soundIcon || !soundText) return;
+      soundIcon.textContent = playing ? "⏸️" : "🔊";
+      soundText.textContent = playing ? "Sound Off" : "Sound On";
+    }
+
+    // 2. Handle clicks to turn music ON or OFF
+    if (toggleBtn && music) {
+      toggleBtn.addEventListener("click", () => {
+        if (!music.paused) {
+          music.pause();
+          localStorage.setItem("musicPlaying", "false");
+          updateUI(false);
+        } else {
+          music.play();
+          localStorage.setItem("musicPlaying", "true");
+          updateUI(true);
+        }
+      });
+    }
+
+    // 3. Constantly remember the timestamp position as the song plays
+    setInterval(() => {
+      if (music && !music.paused) {
+        localStorage.setItem("musicTime", music.currentTime);
+      }
+    }, 500);
+  });
+</script>
