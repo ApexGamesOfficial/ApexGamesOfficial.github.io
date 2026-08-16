@@ -1266,3 +1266,130 @@ button.favorite-button.favorited {
     }
 
 }
+/* =========================================
+   FINAL FAVORITE BUTTON FIX
+   ========================================= */
+
+.game-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
+
+/* Remove any old text/pseudo-elements */
+
+.favorite-button::before,
+.favorite-button::after {
+    content: none !important;
+    display: none !important;
+}
+
+
+/* Small square */
+
+button.favorite-button {
+    width: 42px !important;
+    height: 42px !important;
+
+    min-width: 42px !important;
+    max-width: 42px !important;
+
+    min-height: 42px !important;
+    max-height: 42px !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border: 1px solid #00d2ff !important;
+    border-radius: 11px !important;
+
+    background: rgba(0, 102, 255, 0.12) !important;
+
+    color: #00d2ff !important;
+
+    font-size: 21px !important;
+    font-weight: normal !important;
+
+    line-height: 1 !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    overflow: hidden !important;
+
+    cursor: pointer !important;
+
+    box-sizing: border-box !important;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease !important;
+}
+
+
+/* Hover */
+
+button.favorite-button:hover {
+    transform: translateY(-2px) scale(1.05) !important;
+
+    background: rgba(0, 210, 255, 0.18) !important;
+
+    box-shadow:
+        0 0 18px rgba(0, 210, 255, 0.35) !important;
+}
+
+
+/* Click */
+
+button.favorite-button:active {
+    transform: scale(0.82) !important;
+}
+
+
+/* Favorited */
+
+button.favorite-button.favorited {
+    background: linear-gradient(
+        135deg,
+        #00d2ff,
+        #0066ff
+    ) !important;
+
+    color: white !important;
+
+    border-color: #00d2ff !important;
+
+    box-shadow:
+        0 0 20px rgba(0, 210, 255, 0.45) !important;
+}
+
+
+/* Heart animation */
+
+button.favorite-button.favorite-pop {
+    animation: favoritePop 0.35s ease !important;
+}
+
+
+@keyframes favoritePop {
+
+    0% {
+        transform: scale(0.75);
+    }
+
+    40% {
+        transform: scale(1.2);
+    }
+
+    70% {
+        transform: scale(0.94);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
