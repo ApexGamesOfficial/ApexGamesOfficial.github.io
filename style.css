@@ -1055,3 +1055,107 @@ body {
 .favorite-button.favorited {
     animation: favoritePop 0.35s ease;
 }
+/* PLAY PULSE FAVORITE BUTTON - FINAL */
+
+.game-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+button.favorite-button {
+    width: 44px !important;
+    height: 44px !important;
+
+    min-width: 44px !important;
+    max-width: 44px !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border-radius: 12px !important;
+    border: 1px solid #00d2ff !important;
+
+    background: rgba(0, 102, 255, 0.15) !important;
+
+    color: #00d2ff !important;
+
+    font-size: 20px !important;
+    line-height: 44px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease !important;
+}
+
+
+/* Hover */
+
+button.favorite-button:hover {
+    transform: translateY(-2px) scale(1.05) !important;
+
+    background: rgba(0, 210, 255, 0.2) !important;
+
+    color: white !important;
+
+    box-shadow:
+        0 0 18px rgba(0, 210, 255, 0.4) !important;
+}
+
+
+/* Click */
+
+button.favorite-button:active {
+    transform: scale(0.78) !important;
+}
+
+
+/* Favorited */
+
+button.favorite-button.favorited {
+    background: linear-gradient(
+        135deg,
+        #00d2ff,
+        #0066ff
+    ) !important;
+
+    color: white !important;
+
+    border-color: #00d2ff !important;
+
+    box-shadow:
+        0 0 22px rgba(0, 210, 255, 0.5) !important;
+
+    animation: favoriteButtonPop 0.35s ease;
+}
+
+
+/* Pop animation */
+
+@keyframes favoriteButtonPop {
+
+    0% {
+        transform: scale(0.75);
+    }
+
+    40% {
+        transform: scale(1.25);
+    }
+
+    70% {
+        transform: scale(0.95);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
