@@ -1,312 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Play Pulse</title>
-
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
-
+    <link rel="stylesheet" href="style.css">
 </head>
-
-
 <body>
-
-
     <!-- BACKGROUND -->
-
     <div class="animated-background">
-
         <div class="glow glow-1"></div>
         <div class="glow glow-2"></div>
         <div class="glow glow-3"></div>
-
         <div class="particles">
-
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-
+            <span></span> <span></span> <span></span> <span></span> <span></span> 
+            <span></span> <span></span> <span></span> <span></span> <span></span>
         </div>
-
     </div>
 
-
     <!-- SIDEBAR -->
-
     <aside class="sidebar">
-
         <div class="logo">
-
             <h2>PLAY PULSE</h2>
-
             <span>Apex Games</span>
-
         </div>
-
-
-        <div class="sidebar-title">
-            Main
-        </div>
-
-
-        <a
-            href="index.html"
-            class="nav-item active"
-        >
-
-            <span class="nav-icon">🏠</span>
-
-            <span>Home</span>
-
+        <div class="sidebar-title">Main</div>
+        <a href="index.html" class="nav-item active">
+            <span class="nav-icon">🏠</span> <span>Home</span>
+        </a>
+        <a href="games.html" class="nav-item">
+            <span class="nav-icon">🎮</span> <span>Games</span>
+        </a>
+        <a href="featured.html" class="nav-item">
+            <span class="nav-icon">⭐</span> <span>Featured</span>
+        </a>
+        <a href="popular.html" class="nav-item">
+            <span class="nav-icon">🔥</span> <span>Popular</span>
+        </a>
+        <div class="sidebar-title">Library</div>
+        <a href="recent.html" class="nav-item">
+            <span class="nav-icon">🕘</span> <span>Recently Played</span>
+        </a>
+        <a href="favorites.html" class="nav-item">
+            <span class="nav-icon">❤️</span> <span>Favorites</span>
+        </a>
+        <div class="sidebar-title">More</div>
+        <a href="settings.html" class="nav-item">
+            <span class="nav-icon">⚙️</span> <span>Settings</span>
+        </a>
+        <a href="about.html" class="nav-item">
+            <span class="nav-icon">ℹ️</span> <span>About</span>
         </a>
 
-
-        <a
-            href="games.html"
-            class="nav-item"
-        >
-
-            <span class="nav-icon">🎮</span>
-
-            <span>Games</span>
-
-        </a>
-
-
-        <a
-            href="featured.html"
-            class="nav-item"
-        >
-
-            <span class="nav-icon">⭐</span>
-
-            <span>Featured</span>
-
-        </a>
-
-
-        <a
-            href="popular.html"
-            class="nav-item"
-        >
-
-            <span class="nav-icon">🔥</span>
-
-            <span>Popular</span>
-
-        </a>
-
-
-        <div class="sidebar-title">
-            Library
-        </div>
-
-
-        <a
-            href="recent.html"
-            class="nav-item"
-        >
-
-            <span class="nav-icon">🕘</span>
-
-            <span>Recently Played</span>
-
-        </a>
-
-
-        <a
-            href="favorites.html"
-            class="nav-item"
-        >
-
-            <span class="nav-icon">❤️</span>
-
-            <span>Favorites</span>
-
-        </a>
-
-
-        <div class="sidebar-title">
-            More
-        </div>
-
-
-        <a
-            href="settings.html"
-            class="nav-item"
-        >
-
-            <span class="nav-icon">⚙️</span>
-
-            <span>Settings</span>
-
-        </a>
-
-
-        <a
-            href="about.html"
-            class="nav-item"
-        >
-
-            <span class="nav-icon">ℹ️</span>
-
-            <span>About</span>
-
-        </a>
-
-
-        <!-- SOUND -->
-
-        <button
-            class="sound-control"
-            id="soundControl"
-        >
-
-            <span id="soundIcon">
-                🔊
-            </span>
-
-            <span id="soundText">
-                Sound On
-            </span>
-
+        <!-- SOUND BUTTON -->
+        <button class="sound-control" id="soundControl">
+            <span id="soundIcon">🔊</span>
+            <span id="soundText">Sound On</span>
         </button>
 
-
-           <div class="sidebar-footer"> 
-        <strong> APEX GAMES </strong> <br> Play Pulse <br> Gaming Portal 
-        <p style="font-size: 11px; margin-top: 10px; opacity: 0.6; font-family: sans-serif;">&copy; 2026 Apex Games. All Rights Reserved.</p>
-    </div> 
-</aside>
+        <div class="sidebar-footer">
+            <strong>APEX GAMES</strong> <br> Play Pulse <br> Gaming Portal
+            <p style="font-size: 11px; margin-top: 10px; opacity: 0.6; font-family: sans-serif;">&copy; 2026 Apex Games. All Rights Reserved.</p>
+        </div>
+    </aside>
 
     <!-- MAIN -->
-
     <main class="main-content">
-
         <section class="page home-page">
-
             <div class="home-wrapper">
-
-                <h1 class="home-logo">
-                    PLAY PULSE
-                </h1>
-
-
+                <h1 class="home-logo">PLAY PULSE</h1>
                 <div class="home-line"></div>
-
-
-                <div class="home-subtitle">
-                    Apex Games
-                </div>
-
-
+                <div class="home-subtitle">Apex Games</div>
+                
                 <!-- UPDATE LOG -->
-
                 <div class="update-log">
-
                     <div class="update-log-header">
-
-                        <h3>
-                            📝 Latest Update
-                        </h3>
-
-                        <span class="version">
-                            v0.1
-                        </span>
-
+                        <h3>📝 Latest Update</h3>
+                        <span class="version">v0.1</span>
                     </div>
-
-
                     <ul>
-
-                        <li>
-                            Added separate website pages
-                        </li>
-
-                        <li>
-                            Added Play Pulse audio system
-                        </li>
-
-                        <li>
-                            Added navigation sounds
-                        </li>
-
-                        <li>
-                            Added game search foundation
-                        </li>
-
-                        <li>
-                            More games coming soon
-                        </li>
-
+                        <li>Added separate website pages</li>
+                        <li>Added Play Pulse audio system</li>
+                        <li>Added navigation sounds</li>
+                        <li>Added game search foundation</li>
+                        <li>More games coming soon</li>
                     </ul>
-
                 </div>
-
             </div>
-
         </section>
-
     </main>
 
+    <footer>
+        <p>&copy; 2026 Apex Games. All Rights Reserved.</p>
+    </footer>
 
-    <script src="script.js"></script>
-</html>
-<footer>
-    <p>&copy; 2026 Apex Games. All Rights Reserved.</p>
-</footer>
-</body>
+    <!-- HIDDEN AUDIO TRACK -->
+    <audio id="bgMusic" loop>
+        <source src="PlayPulseSoundtrack.mp3" type="audio/mpeg">
+    </audio>
 
-  <audio id="bgMusic" loop>
-    <source src="PlayPulseSoundtrack.mp3" type="audio/mpeg">
-  </audio>
+    <!-- MUSIC CONTROLLER LOGIC -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const music = document.getElementById("bgMusic");
+            const toggleBtn = document.getElementById("soundControl");
+            const soundIcon = document.getElementById("soundIcon");
+            const soundText = document.getElementById("soundText");
 
-</body>
-</html>
-  <!-- Hidden Audio File -->
-  <audio id="bgMusic" loop>
-    <source src="PlayPulseSoundtrack.mp3" type="audio/mpeg">
-  </audio>
-
-  <!-- Button Controller Logic -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const music = document.getElementById("bgMusic");
-      
-      // Selects your existing "Sound On" element dynamically
-      const toggleBtn = document.querySelector(".sound-toggle") || document.getElementById("soundBtn"); 
-
-      if (toggleBtn) {
-        toggleBtn.addEventListener("click", () => {
-          if (music.paused) {
-            music.play();
-            // Optional UI visual change confirmation
-            toggleBtn.style.opacity = "1.0"; 
-          } else {
-            music.pause();
-            toggleBtn.style.opacity = "0.6";
-          }
+            if (toggleBtn && music) {
+                toggleBtn.addEventListener("click", () => {
+                    if (music.paused) {
+                        music.play();
+                        soundIcon.textContent = "⏸️";
+                        soundText.textContent = "Sound Off";
+                    } else {
+                        music.pause();
+                        soundIcon.textContent = "🔊";
+                        soundText.textContent = "Sound On";
+                    }
+                });
+            }
         });
-      }
-    });
-  </script>
+    </script>
+
+    <!-- YOUR EXTERNAL SCRIPT -->
+    <script src="script.js"></script>
 </body>
 </html>
+
