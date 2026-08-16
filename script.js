@@ -1,288 +1,309 @@
-<!DOCTYPE html>
-<html lang="en">
+/* =========================================
+   PLAY PULSE
+   Main Website Script
+   ========================================= */
 
-<head>
 
-    <meta charset="UTF-8">
+/* =========================================
+   SOUND SYSTEM
+   ========================================= */
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+const soundControl = document.getElementById("soundControl");
+const soundIcon = document.getElementById("soundIcon");
+const soundText = document.getElementById("soundText");
 
-    <title>Play Pulse</title>
+let soundEnabled =
+    localStorage.getItem("playPulseSound") !== "off";
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
 
-</head>
+function updateSoundButton() {
 
+    if (!soundControl) return;
 
-<body>
+    if (soundEnabled) {
 
+        if (soundIcon) soundIcon.textContent = "🔊";
+        if (soundText) soundText.textContent = "Sound On";
 
-    <!-- BACKGROUND -->
+    } else {
 
-    <div class="animated-background">
+        if (soundIcon) soundIcon.textContent = "🔇";
+        if (soundText) soundText.textContent = "Sound Off";
 
-        <div class="glow glow-1"></div>
-        <div class="glow glow-2"></div>
-        <div class="glow glow-3"></div>
+    }
+}
 
-        <div class="particles">
 
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+updateSoundButton();
 
-        </div>
 
-    </div>
+if (soundControl) {
 
+    soundControl.addEventListener("click", () => {
 
-    <!-- SIDEBAR -->
+        soundEnabled = !soundEnabled;
 
-    <aside class="sidebar">
+        localStorage.setItem(
+            "playPulseSound",
+            soundEnabled ? "on" : "off"
+        );
 
-        <div class="logo">
+        updateSoundButton();
 
-            <h2>PLAY PULSE</h2>
+    });
 
-            <span>Apex Games</span>
+}
 
-        </div>
 
+/* =========================================
+   FAVORITES SYSTEM
+   ========================================= */
 
-        <div class="sidebar-title">
-            Main
-        </div>
+function getFavorites() {
 
+    return JSON.parse(
+        localStorage.getItem("playPulseFavorites")
+    ) || [];
 
-        <a
-            href="index.html"
-            class="nav-item active"
-        >
+}
 
-            <span class="nav-icon">🏠</span>
 
-            <span>Home</span>
+function saveFavorites(favorites) {
 
-        </a>
+    localStorage.setItem(
+        "playPulseFavorites",
+        JSON.stringify(favorites)
+    );
 
+}
 
-        <a
-            href="games.html"
-            class="nav-item"
-        >
 
-            <span class="nav-icon">🎮</span>
+/* Add a game to Favorites */
 
-            <span>Games</span>
+function addFavorite(gameName) {
 
-        </a>
+    let favorites = getFavorites();
 
+    if (!favorites.includes(gameName)) {
 
-        <a
-            href="featured.html"
-            class="nav-item"
-        >
+        favorites.push(gameName);
 
-            <span class="nav-icon">⭐</span>
+        saveFavorites(favorites);
 
-            <span>Featured</span>
+    }
 
-        </a>
+}
 
 
-        <a
-            href="popular.html"
-            class="nav-item"
-        >
+/* Remove a game from Favorites */
 
-            <span class="nav-icon">🔥</span>
+function removeFavorite(gameName) {
 
-            <span>Popular</span>
+    let favorites = getFavorites();
 
-        </a>
+    favorites = favorites.filter(
+        game => game !== gameName
+    );
 
+    saveFavorites(favorites);
 
-        <div class="sidebar-title">
-            Library
-        </div>
+}
 
 
-        <a
-            href="recent.html"
-            class="nav-item"
-        >
+/* Check if a game is already favorited */
 
-            <span class="nav-icon">🕘</span>
+function isFavorite(gameName) {
 
-            <span>Recently Played</span>
+    const favorites = getFavorites();
 
-        </a>
+    return favorites.includes(gameName);
 
+}
 
-        <a
-            href="favorites.html"
-            class="nav-item"
-        >
 
-            <span class="nav-icon">❤️</span>
+/* Toggle favorite */
 
-            <span>Favorites</span>
+function toggleFavorite(gameName, button) {
 
-        </a>
+    if (isFavorite(gameName)) {
 
+        removeFavorite(gameName);
 
-        <div class="sidebar-title">
-            More
-        </div>
+        if (button) {
+            button.textContent = "♡ Favorite";
+            button.classList.remove("favorited");
+        }
 
+    } else {
 
-        <a
-            href="settings.html"
-            class="nav-item"
-        >
+        addFavorite(gameName);
 
-            <span class="nav-icon">⚙️</span>
+        if (button) {
+            button.textContent = "♥ Favorited";
+            button.classList.add("favorited");
+        }
 
-            <span>Settings</span>
+    }
 
-        </a>
+}
 
 
-        <a
-            href="about.html"
-            class="nav-item"
-        >
+/* =========================================
+   AUTOMATIC FAVORITE BUTTON SETUP
+   ========================================= */
 
-            <span class="nav-icon">ℹ️</span>
+document.querySelectorAll(
+    "[data-favorite]"
+).forEach(button => {
 
-            <span>About</span>
+    const gameName =
+        button.dataset.favorite;
 
-        </a>
 
+    /* Set correct state when page loads */
 
-        <!-- SOUND -->
+    if (isFavorite(gameName)) {
 
-        <button
-            class="sound-control"
-            id="soundControl"
-        >
+        button.textContent = "♥ Favorited";
 
-            <span id="soundIcon">
-                🔊
-            </span>
+        button.classList.add("favorited");
 
-            <span id="soundText">
-                Sound On
-            </span>
+    }
 
-        </button>
 
+    /* Button click */
 
-        <div class="sidebar-footer">
+    button.addEventListener(
+        "click",
+        () => {
 
-            <strong>
-                APEX GAMES
-            </strong>
+            toggleFavorite(
+                gameName,
+                button
+            );
 
-            <br>
+        }
+    );
 
-            Play Pulse
+});
 
-            <br>
 
-            Gaming Portal
+/* =========================================
+   RECENTLY PLAYED SYSTEM
+   ========================================= */
 
-        </div>
+function getRecentlyPlayed() {
 
-    </aside>
+    return JSON.parse(
+        localStorage.getItem(
+            "playPulseRecent"
+        )
+    ) || [];
 
+}
 
-    <!-- MAIN -->
 
-    <main class="main-content">
+function addRecentlyPlayed(gameName) {
 
-        <section class="page home-page">
+    let recent =
+        getRecentlyPlayed();
 
-            <div class="home-wrapper">
 
-                <h1 class="home-logo">
-                    PLAY PULSE
-                </h1>
+    /* Remove duplicate */
 
+    recent =
+        recent.filter(
+            game => game !== gameName
+        );
 
-                <div class="home-line"></div>
 
+    /* Put newest game first */
 
-                <div class="home-subtitle">
-                    Apex Games
-                </div>
+    recent.unshift(gameName);
 
 
-                <!-- UPDATE LOG -->
+    /* Keep only the last 10 */
 
-                <div class="update-log">
+    recent =
+        recent.slice(0, 10);
 
-                    <div class="update-log-header">
 
-                        <h3>
-                            📝 Latest Update
-                        </h3>
+    localStorage.setItem(
+        "playPulseRecent",
+        JSON.stringify(recent)
+    );
 
-                        <span class="version">
-                            v0.3
-                        </span>
+}
 
-                    </div>
 
+/* =========================================
+   GAME PLAY BUTTONS
+   ========================================= */
 
-                    <ul>
+document.querySelectorAll(
+    "[data-game]"
+).forEach(button => {
 
-                        <li>
-                            Added separate website pages
-                        </li>
+    button.addEventListener(
+        "click",
+        () => {
 
-                        <li>
-                            Added Play Pulse audio system
-                        </li>
+            const gameName =
+                button.dataset.game;
 
-                        <li>
-                            Added navigation sounds
-                        </li>
 
-                        <li>
-                            Added game search foundation
-                        </li>
+            addRecentlyPlayed(
+                gameName
+            );
 
-                        <li>
-                            More games coming soon
-                        </li>
+        }
+    );
 
-                    </ul>
+});
 
-                </div>
 
-            </div>
+/* =========================================
+   NAVIGATION CLICK EFFECT
+   ========================================= */
 
-        </section>
+document.querySelectorAll(
+    ".nav-item"
+).forEach(item => {
 
-    </main>
+    item.addEventListener(
+        "click",
+        () => {
 
+            document.body.classList.add(
+                "page-changing"
+            );
 
-    <script src="script.js"></script>
+            setTimeout(() => {
 
-</body>
+                document.body.classList.remove(
+                    "page-changing"
+                );
 
-</html>
+            }, 300);
+
+        }
+    );
+
+});
+
+
+/* =========================================
+   PAGE READY
+   ========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        document.body.classList.add(
+            "page-loaded"
+        );
+
+    }
+);
+
