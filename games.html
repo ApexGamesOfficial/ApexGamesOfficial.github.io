@@ -1,262 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Games • Play Pulse</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="animated-background">
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
-    <div class="glow glow-3"></div>
+    <!-- ANIMATED BACKGROUND -->
+    <div class="animated-background">
 
-    <div class="particles">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-</div>
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+        <div class="glow glow-3"></div>
 
+        <div class="particles">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
 
-<aside class="sidebar">
-
-    <div class="logo">
-        <h2>PLAY PULSE</h2>
-        <span>Apex Games</span>
     </div>
 
-    <div class="sidebar-title">Main</div>
 
-    <a href="index.html" class="nav-item">
-        <span class="nav-icon">🏠</span>
-        <span>Home</span>
-    </a>
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
 
-    <a href="games.html" class="nav-item active">
-        <span class="nav-icon">🎮</span>
-        <span>Games</span>
-    </a>
-
-    <a href="featured.html" class="nav-item">
-        <span class="nav-icon">⭐</span>
-        <span>Featured</span>
-    </a>
-
-    <a href="popular.html" class="nav-item">
-        <span class="nav-icon">🔥</span>
-        <span>Popular</span>
-    </a>
-
-    <div class="sidebar-title">Library</div>
-
-    <a href="recent.html" class="nav-item">
-        <span class="nav-icon">🕘</span>
-        <span>Recently Played</span>
-    </a>
-
-    <a href="favorites.html" class="nav-item">
-        <span class="nav-icon">❤️</span>
-        <span>Favorites</span>
-    </a>
-
-    <div class="sidebar-title">More</div>
-
-    <a href="settings.html" class="nav-item">
-        <span class="nav-icon">⚙️</span>
-        <span>Settings</span>
-    </a>
-
-    <a href="about.html" class="nav-item">
-        <span class="nav-icon">ℹ️</span>
-        <span>About</span>
-    </a>
-
-    <button class="sound-control" id="soundControl">
-        <span id="soundIcon">🔊</span>
-        <span id="soundText">Sound On</span>
-    </button>
-
-    <div class="sidebar-footer">
-        <strong>APEX GAMES</strong>
-        <br>
-        Play Pulse
-        <br>
-        Gaming Portal
-    </div>
-
-</aside>
-
-
-<main class="main-content">
-
-    <section class="page">
-
-        <div class="page-header">
-            <h1>Games</h1>
-            <p>Browse the Play Pulse game library.</p>
+        <div class="logo">
+            <h2>PLAY PULSE</h2>
+            <span>Apex Games</span>
         </div>
 
 
-        <div class="game-grid">
+        <div class="sidebar-title">
+            Main
+        </div>
 
-            <div class="game-card">
 
-                <div class="game-icon">👾</div>
+        <a href="index.html" class="nav-item">
+            <span class="nav-icon">🏠</span>
+            <span>Home</span>
+        </a>
 
-                <h3>Space Invaders Classic</h3>
 
-                <p>Classic arcade action.</p>
+        <a href="games.html" class="nav-item active">
+            <span class="nav-icon">🎮</span>
+            <span>Games</span>
+        </a>
 
-                <div class="game-actions">
+
+        <a href="featured.html" class="nav-item">
+            <span class="nav-icon">⭐</span>
+            <span>Featured</span>
+        </a>
+
+
+        <a href="popular.html" class="nav-item">
+            <span class="nav-icon">🔥</span>
+            <span>Popular</span>
+        </a>
+
+
+        <div class="sidebar-title">
+            Library
+        </div>
+
+
+        <a href="recent.html" class="nav-item">
+            <span class="nav-icon">🕘</span>
+            <span>Recently Played</span>
+        </a>
+
+
+        <a href="favorites.html" class="nav-item">
+            <span class="nav-icon">❤️</span>
+            <span>Favorites</span>
+        </a>
+
+
+        <div class="sidebar-title">
+            More
+        </div>
+
+
+        <a href="settings.html" class="nav-item">
+            <span class="nav-icon">⚙️</span>
+            <span>Settings</span>
+        </a>
+
+
+        <a href="about.html" class="nav-item">
+            <span class="nav-icon">ℹ️</span>
+            <span>About</span>
+        </a>
+
+
+        <!-- SOUND -->
+        <button
+            class="sound-control"
+            id="soundControl"
+        >
+            <span id="soundIcon">🔊</span>
+            <span id="soundText">Sound On</span>
+        </button>
+
+
+        <div class="sidebar-footer">
+
+            <strong>APEX GAMES</strong>
+
+            <br>
+
+            Play Pulse
+
+            <br>
+
+            Gaming Portal
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <section class="page">
+
+            <div class="page-header">
+
+                <h1>
+                    Games
+                </h1>
+
+                <p>
+                    Browse the Play Pulse game library.
+                </p>
+
+            </div>
+
+
+            <!-- GAME GRID -->
+            <div class="game-grid">
+
+
+                <!-- SPACE INVADERS -->
+                <div class="game-card">
+
+                    <div class="game-icon">
+                        👾
+                    </div>
+
+                    <h3>
+                        Space Invaders Classic
+                    </h3>
+
+                    <p>
+                        Classic arcade action.
+                    </p>
+
+
+                    <div class="game-actions">
+
+                        <button
+                            class="play-button"
+                            data-game="Space Invaders Classic"
+                        >
+                            Play
+                        </button>
+
+
+                        <button
+                            class="favorite-button"
+                            data-favorite="Space Invaders Classic"
+                            aria-label="Favorite Space Invaders Classic"
+                        >
+                            ♥
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RETRO SNAKE -->
+                <div class="game-card">
+
+                    <div class="game-icon">
+                        🐍
+                    </div>
+
+                    <h3>
+                        Retro Snake
+                    </h3>
+
+                    <p>
+                        The classic Snake experience.
+                    </p>
+
+
+                    <div class="game-actions">
+
+                        <button
+                            class="play-button"
+                            data-game="Retro Snake"
+                        >
+                            Play
+                        </button>
+
+
+                        <button
+                            class="favorite-button"
+                            data-favorite="Retro Snake"
+                            aria-label="Favorite Retro Snake"
+                        >
+                            ♥
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- COMING SOON -->
+                <div class="game-card">
+
+                    <div class="game-icon">
+                        🚀
+                    </div>
+
+                    <h3>
+                        More Games Coming Soon
+                    </h3>
+
+                    <p>
+                        New games are coming to Play Pulse.
+                    </p>
 
                     <button
                         class="play-button"
-                        data-game="Space Invaders Classic"
+                        disabled
                     >
-                        Play
-                    </button>
-
-                    <button
-                        class="favorite-button"
-                        data-favorite="Space Invaders Classic"
-                    >
-                        ♡ Favorite
+                        Coming Soon
                     </button>
 
                 </div>
 
-            </div>
-
-
-            <div class="game-card">
-
-                <div class="game-icon">🐍</div>
-
-                <h3>Retro Snake</h3>
-
-                <p>The classic Snake experience.</p>
-
-                <div class="game-actions">
-
-                    <button
-                        class="play-button"
-                        data-game="Retro Snake"
-                    >
-                        Play
-                    </button>
-
-                    <button
-                        class="favorite-button"
-                        data-favorite="Retro Snake"
-                    >
-                        ♡ Favorite
-                    </button>
-
-                </div>
 
             </div>
 
+        </section>
 
-            <div class="game-card">
-
-                <div class="game-icon">🚀</div>
-
-                <h3>More Games Coming Soon</h3>
-
-                <p>New games will be added to Play Pulse.</p>
-
-                <button class="play-button" disabled>
-                    Coming Soon
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-</main>
+    </main>
 
 
-<script src="script.js"></script>
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+
+
+    <!-- FAVORITE BUTTON ANIMATION -->
+    <script>
+
+        document
+            .querySelectorAll(".favorite-button")
+            .forEach(button => {
+
+                button.addEventListener("click", function () {
+
+                    this.classList.remove("favorite-pop");
+
+                    void this.offsetWidth;
+
+                    this.classList.add("favorite-pop");
+
+                });
+
+            });
+
+    </script>
 
 </body>
+
 </html>
-<!-- AUDIO TRACKER -->
-<audio id="bgMusic" loop>
-  <source src="audio/PlayPulseSoundtrack.mp3" type="audio/mpeg">
-</audio>
-
-<!-- MUSIC CONTROLLER WITH MEMORY -->
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const music = document.getElementById("bgMusic");
-    const toggleBtn = document.getElementById("soundControl");
-    const soundIcon = document.getElementById("soundIcon");
-    const soundText = document.getElementById("soundText");
-
-    // 1. Sync saved track position and state
-    const savedTime = localStorage.getItem("musicTime");
-    const isMusicPlaying = localStorage.getItem("musicPlaying") === "true";
-
-    if (music) {
-      if (savedTime) {
-        music.currentTime = parseFloat(savedTime);
-      }
-      
-      // Auto-resume if it was active on the previous page
-      if (isMusicPlaying) {
-        music.play().then(() => {
-          updateUI(true);
-        }).catch(() => {
-          localStorage.setItem("musicPlaying", "false");
-          updateUI(false);
-        });
-      } else {
-        updateUI(false);
-      }
-    }
-
-    // Swapped Visual UI definitions to match your layout state
-    function updateUI(playing) {
-      if (!soundIcon || !soundText) return;
-      soundIcon.textContent = playing ? "⏸️" : "🔊";
-      soundText.textContent = playing ? "Sound Off" : "Sound On";
-    }
-
-    // 2. Click Handler - Fixed Inverse Direction Clashes
-    if (toggleBtn && music) {
-      toggleBtn.addEventListener("click", () => {
-        // If it is paused, click means turn it ON
-        if (music.paused) {
-          music.play();
-          localStorage.setItem("musicPlaying", "true");
-          updateUI(true);
-        } else {
-          // If it is playing, click means turn it OFF
-          music.pause();
-          localStorage.setItem("musicPlaying", "false");
-          updateUI(false);
-        }
-      });
-    }
-
-    // 3. Track time location smoothly
-    setInterval(() => {
-      if (music && !music.paused) {
-        localStorage.setItem("musicTime", music.currentTime);
-      }
-    }, 500);
-  });
-</script>
