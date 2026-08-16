@@ -1159,3 +1159,110 @@ button.favorite-button.favorited {
     }
 
 }
+/* =========================================
+   FAVORITE BUTTON
+   ========================================= */
+
+.game-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+
+button.favorite-button {
+    width: 42px !important;
+    height: 42px !important;
+
+    min-width: 42px !important;
+    max-width: 42px !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border-radius: 11px !important;
+
+    border: 1px solid rgba(0, 210, 255, 0.55) !important;
+
+    background: rgba(0, 102, 255, 0.12) !important;
+
+    color: #00d2ff !important;
+
+    font-size: 21px !important;
+
+    display: inline-flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    line-height: 1 !important;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+button.favorite-button:hover {
+    transform: translateY(-2px) scale(1.05) !important;
+
+    background: rgba(0, 210, 255, 0.16) !important;
+
+    border-color: #00d2ff !important;
+
+    box-shadow:
+        0 0 16px rgba(0, 210, 255, 0.3) !important;
+}
+
+
+button.favorite-button:active {
+    transform: scale(0.82) !important;
+}
+
+
+button.favorite-button.favorited {
+    color: white !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00d2ff,
+            #0066ff
+        ) !important;
+
+    border-color: #00d2ff !important;
+
+    box-shadow:
+        0 0 18px rgba(0, 210, 255, 0.45) !important;
+}
+
+
+.favorite-pop {
+    animation: favoriteButtonPop 0.35s ease;
+}
+
+
+@keyframes favoriteButtonPop {
+
+    0% {
+        transform: scale(0.78);
+    }
+
+    40% {
+        transform: scale(1.18);
+    }
+
+    70% {
+        transform: scale(0.94);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
