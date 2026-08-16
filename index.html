@@ -99,7 +99,7 @@
         <source src="audio/PlayPulseSoundtrack.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- AUDIO TRACKER -->
+  <!-- AUDIO TRACKER -->
 <audio id="bgMusic" loop>
   <source src="audio/PlayPulseSoundtrack.mp3" type="audio/mpeg">
 </audio>
@@ -112,7 +112,7 @@
     const soundIcon = document.getElementById("soundIcon");
     const soundText = document.getElementById("soundText");
 
-    // 1. Check if music was playing on the last page and where it left off
+    // 1. Sync saved track position and state
     const savedTime = localStorage.getItem("musicTime");
     const isMusicPlaying = localStorage.getItem("musicPlaying") === "true";
 
@@ -121,7 +121,7 @@
         music.currentTime = parseFloat(savedTime);
       }
       
-      // If it was playing before, automatically resume it on this new page
+      // Auto-resume if it was active on the previous page
       if (isMusicPlaying) {
         music.play().then(() => {
           updateUI(true);
@@ -134,28 +134,31 @@
       }
     }
 
+    // Swapped Visual UI definitions to match your layout state
     function updateUI(playing) {
       if (!soundIcon || !soundText) return;
       soundIcon.textContent = playing ? "⏸️" : "🔊";
       soundText.textContent = playing ? "Sound Off" : "Sound On";
     }
 
-    // 2. Handle clicks to turn music ON or OFF
+    // 2. Click Handler - Fixed Inverse Direction Clashes
     if (toggleBtn && music) {
       toggleBtn.addEventListener("click", () => {
-        if (!music.paused) {
-          music.pause();
-          localStorage.setItem("musicPlaying", "false");
-          updateUI(false);
-        } else {
+        // If it is paused, click means turn it ON
+        if (music.paused) {
           music.play();
           localStorage.setItem("musicPlaying", "true");
           updateUI(true);
+        } else {
+          // If it is playing, click means turn it OFF
+          music.pause();
+          localStorage.setItem("musicPlaying", "false");
+          updateUI(false);
         }
       });
     }
 
-    // 3. Constantly remember the timestamp position as the song plays
+    // 3. Track time location smoothly
     setInterval(() => {
       if (music && !music.paused) {
         localStorage.setItem("musicTime", music.currentTime);
@@ -163,6 +166,7 @@
     }, 500);
   });
 </script>
+
 
     <!-- YOUR EXTERNAL SCRIPT -->
     <script src="script.js"></script>
