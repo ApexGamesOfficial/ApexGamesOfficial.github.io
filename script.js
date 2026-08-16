@@ -1,11 +1,40 @@
 /* =========================================
-   PLAY PULSE
+   PLAY PULSE v.01
+   MAIN JAVASCRIPT
    ========================================= */
+
+
+/* =========================================
+   STORAGE HELPERS
+   ========================================= */
+
+function getStoredArray(key) {
+    try {
+        const data = localStorage.getItem(key);
+        return data ? JSON.parse(data) : [];
+    } catch (error) {
+        console.warn(`Play Pulse: Could not read ${key}`, error);
+        return [];
+    }
+}
+
+
+function saveStoredArray(key, array) {
+    try {
+        localStorage.setItem(key, JSON.stringify(array));
+    } catch (error) {
+        console.warn(`Play Pulse: Could not save ${key}`, error);
+    }
+}
 
 
 /* =========================================
    SOUND
    ========================================= */
+
+let soundEnabled =
+    localStorage.getItem("playPulseSound") !== "off";
+
 
 const soundControl =
     document.getElementById("soundControl");
@@ -17,54 +46,56 @@ const soundText =
     document.getElementById("soundText");
 
 
-let soundEnabled =
-    localStorage.getItem("playPulseSound") !== "off";
-
-
 function updateSoundButton() {
-
-    if (!soundControl) return;
 
     if (soundEnabled) {
 
-        if (soundIcon)
+        if (soundIcon) {
             soundIcon.textContent = "🔊";
+        }
 
-        if (soundText)
+        if (soundText) {
             soundText.textContent = "Sound On";
+        }
 
     } else {
 
-        if (soundIcon)
+        if (soundIcon) {
             soundIcon.textContent = "🔇";
+        }
 
-        if (soundText)
+        if (soundText) {
             soundText.textContent = "Sound Off";
+        }
 
     }
+}
+
+
+function toggleSound() {
+
+    soundEnabled = !soundEnabled;
+
+    localStorage.setItem(
+        "playPulseSound",
+        soundEnabled ? "on" : "off"
+    );
+
+    updateSoundButton();
+}
+
+
+if (soundControl) {
+
+    soundControl.addEventListener(
+        "click",
+        toggleSound
+    );
 
 }
 
 
 updateSoundButton();
-
-
-if (soundControl) {
-
-    soundControl.addEventListener("click", () => {
-
-        soundEnabled = !soundEnabled;
-
-        localStorage.setItem(
-            "playPulseSound",
-            soundEnabled ? "on" : "off"
-        );
-
-        updateSoundButton();
-
-    });
-
-}
 
 
 /* =========================================
@@ -73,26 +104,26 @@ if (soundControl) {
 
 function getFavorites() {
 
-    return JSON.parse(
-        localStorage.getItem(
-            "playPulseFavorites"
-        )
-    ) || [];
+    return getStoredArray(
+        "playPulseFavorites"
+    );
 
 }
 
 
 function saveFavorites(favorites) {
 
-    localStorage.setItem(
+    saveStoredArray(
         "playPulseFavorites",
-        JSON.stringify(favorites)
+        favorites
     );
 
 }
 
 
 function addFavorite(gameName) {
+
+    if (!gameName) return;
 
     const favorites =
         getFavorites();
@@ -110,100 +141,150 @@ function addFavorite(gameName) {
 
 function removeFavorite(gameName) {
 
-    let favorites =
+    if (!gameName) return;
+
+    const favorites =
         getFavorites();
 
-    favorites =
+    const updatedFavorites =
         favorites.filter(
             game => game !== gameName
         );
 
-    saveFavorites(favorites);
+    saveFavorites(updatedFavorites);
 
 }
 
 
 function isFavorite(gameName) {
 
-    return getFavorites().includes(gameName);
+    if (!gameName) return false;
+
+    return getFavorites().includes(
+        gameName
+    );
 
 }
 
 
 /* =========================================
-   FAVORITE BUTTON
+   UPDATE FAVORITE BUTTON
    ========================================= */
 
-document
-    .querySelectorAll(".favorite-button")
-    .forEach(button => {
+function updateFavoriteButton(button) {
 
-        const gameName =
-            button.dataset.favorite;
+    if (!button) return;
 
+    const gameName =
+        button.dataset.favorite;
 
-        /* Restore saved state */
-
-        if (isFavorite(gameName)) {
-
-            button.textContent = "♥";
-
-            button.classList.add(
-                "favorited"
-            );
-
-        } else {
-
-            button.textContent = "♡";
-
-        }
+    if (!gameName) return;
 
 
-        /* Click */
+    if (isFavorite(gameName)) {
 
-        button.addEventListener(
-            "click",
-            () => {
+        button.textContent = "♥";
 
-                if (isFavorite(gameName)) {
+        button.classList.add(
+            "favorited"
+        );
 
-                    removeFavorite(gameName);
+        button.setAttribute(
+            "aria-label",
+            `Remove ${gameName} from favorites`
+        );
 
-                    button.textContent = "♡";
+        button.setAttribute(
+            "aria-pressed",
+            "true"
+        );
 
-                    button.classList.remove(
-                        "favorited"
+    } else {
+
+        button.textContent = "♡";
+
+        button.classList.remove(
+            "favorited"
+        );
+
+        button.setAttribute(
+            "aria-label",
+            `Add ${gameName} to favorites`
+        );
+
+        button.setAttribute(
+            "aria-pressed",
+            "false"
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   FAVORITE BUTTONS
+   ========================================= */
+
+function initializeFavoriteButtons() {
+
+    document
+        .querySelectorAll(".favorite-button")
+        .forEach(button => {
+
+            updateFavoriteButton(button);
+
+
+            button.addEventListener(
+                "click",
+                event => {
+
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    const gameName =
+                        button.dataset.favorite;
+
+                    if (!gameName) return;
+
+
+                    if (isFavorite(gameName)) {
+
+                        removeFavorite(gameName);
+
+                    } else {
+
+                        addFavorite(gameName);
+
+                    }
+
+
+                    updateFavoriteButton(
+                        button
                     );
 
-                } else {
 
-                    addFavorite(gameName);
+                    /* Favorite animation */
 
-                    button.textContent = "♥";
+                    button.classList.remove(
+                        "favorite-pop"
+                    );
+
+                    void button.offsetWidth;
 
                     button.classList.add(
-                        "favorited"
+                        "favorite-pop"
                     );
 
                 }
+            );
+
+        });
+
+}
 
 
-                /* Animation */
-
-                button.classList.remove(
-                    "favorite-pop"
-                );
-
-                void button.offsetWidth;
-
-                button.classList.add(
-                    "favorite-pop"
-                );
-
-            }
-        );
-
-    });
+initializeFavoriteButtons();
 
 
 /* =========================================
@@ -212,20 +293,22 @@ document
 
 function getRecentlyPlayed() {
 
-    return JSON.parse(
-        localStorage.getItem(
-            "playPulseRecent"
-        )
-    ) || [];
+    return getStoredArray(
+        "playPulseRecent"
+    );
 
 }
 
 
 function addRecentlyPlayed(gameName) {
 
+    if (!gameName) return;
+
     let recent =
         getRecentlyPlayed();
 
+
+    /* Remove duplicate */
 
     recent =
         recent.filter(
@@ -233,16 +316,22 @@ function addRecentlyPlayed(gameName) {
         );
 
 
-    recent.unshift(gameName);
+    /* Put newest game first */
 
+    recent.unshift(
+        gameName
+    );
+
+
+    /* Keep latest 10 */
 
     recent =
         recent.slice(0, 10);
 
 
-    localStorage.setItem(
+    saveStoredArray(
         "playPulseRecent",
-        JSON.stringify(recent)
+        recent
     );
 
 }
@@ -252,68 +341,234 @@ function addRecentlyPlayed(gameName) {
    GAME BUTTONS
    ========================================= */
 
-document
-    .querySelectorAll("[data-game]")
-    .forEach(button => {
+function initializeGameButtons() {
 
-        button.addEventListener(
-            "click",
-            () => {
+    document
+        .querySelectorAll("[data-game]")
+        .forEach(button => {
 
-                const gameName =
-                    button.dataset.game;
+            button.addEventListener(
+                "click",
+                event => {
 
-                addRecentlyPlayed(
-                    gameName
-                );
+                    /*
+                     * Favorite buttons may also be
+                     * inside a game card, so don't
+                     * treat them as a game launch.
+                     */
 
-            }
+                    if (
+                        button.classList.contains(
+                            "favorite-button"
+                        )
+                    ) {
+                        return;
+                    }
+
+
+                    const gameName =
+                        button.dataset.game;
+
+                    if (!gameName) return;
+
+
+                    addRecentlyPlayed(
+                        gameName
+                    );
+
+                }
+            );
+
+        });
+
+}
+
+
+initializeGameButtons();
+
+
+/* =========================================
+   GAME SEARCH FOUNDATION
+   ========================================= */
+
+function initializeGameSearch() {
+
+    const searchInput =
+        document.querySelector(
+            "#gameSearch, .game-search"
         );
 
-    });
+
+    if (!searchInput) {
+        return;
+    }
+
+
+    const gameCards =
+        document.querySelectorAll(
+            ".game-card"
+        );
+
+
+    searchInput.addEventListener(
+        "input",
+        () => {
+
+            const searchTerm =
+                searchInput.value
+                    .trim()
+                    .toLowerCase();
+
+
+            gameCards.forEach(card => {
+
+                const text =
+                    card.textContent
+                        .toLowerCase();
+
+
+                const matches =
+                    text.includes(
+                        searchTerm
+                    );
+
+
+                card.style.display =
+                    matches ? "" : "none";
+
+            });
+
+        }
+    );
+
+}
+
+
+initializeGameSearch();
 
 
 /* =========================================
    NAVIGATION
    ========================================= */
 
-document
-    .querySelectorAll(".nav-item")
-    .forEach(item => {
+function initializeNavigation() {
 
-        item.addEventListener(
-            "click",
-            () => {
+    document
+        .querySelectorAll(".nav-item")
+        .forEach(item => {
 
-                document.body.classList.add(
-                    "page-changing"
-                );
+            item.addEventListener(
+                "click",
+                () => {
 
-                setTimeout(() => {
-
-                    document.body.classList.remove(
+                    document.body.classList.add(
                         "page-changing"
                     );
 
-                }, 300);
+
+                    setTimeout(
+                        () => {
+
+                            document.body.classList.remove(
+                                "page-changing"
+                            );
+
+                        },
+                        300
+                    );
+
+                }
+            );
+
+        });
+
+}
+
+
+initializeNavigation();
+
+
+/* =========================================
+   ACTIVE NAVIGATION
+   ========================================= */
+
+function setActiveNavigation() {
+
+    const currentPage =
+        window.location.pathname
+            .split("/")
+            .pop()
+            .toLowerCase();
+
+
+    document
+        .querySelectorAll(".nav-item")
+        .forEach(item => {
+
+            const link =
+                item.getAttribute("href");
+
+            if (!link) return;
+
+            const linkPage =
+                link
+                    .split("/")
+                    .pop()
+                    .split("?")[0]
+                    .toLowerCase();
+
+
+            if (
+                linkPage === currentPage
+            ) {
+
+                item.classList.add(
+                    "active"
+                );
 
             }
-        );
 
-    });
+        });
+
+}
+
+
+setActiveNavigation();
 
 
 /* =========================================
    PAGE LOADED
    ========================================= */
 
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
+function initializePage() {
 
-        document.body.classList.add(
-            "page-loaded"
-        );
+    document.body.classList.add(
+        "page-loaded"
+    );
 
-    }
+}
+
+
+if (
+    document.readyState === "loading"
+) {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        initializePage
+    );
+
+} else {
+
+    initializePage();
+
+}
+
+
+/* =========================================
+   PLAY PULSE READY
+   ========================================= */
+
+console.log(
+    "Play Pulse v.01 loaded successfully."
 );
