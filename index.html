@@ -2,37 +2,119 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> Play Pulse </title>
+    <title>Play Pulse</title>
     <style>
-        body { background-color: #121214; color: #ffffff; font-family: sans-serif; text-align: center; margin: 0; padding: 20px; }
-        h1 { color: #00ff88; text-transform: uppercase; letter-spacing: 2px; margin-top: 40px; }
-        p { color: #aaa; margin-bottom: 40px; }
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; padding: 20px; }
-        .game-card { background-color: #1a1a1e; border: 2px solid #2a2a30; border-radius: 12px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .game-card h3 { color: #00ff88; margin-top: 0; font-size: 20px; }
-        .game-frame { border: none; border-radius: 8px; background: #000; width: 100%; height: 400px; }
+        /* Sleek dark obsidian canvas background */
+        body { 
+            background-color: #06070a; 
+            color: #ffffff; 
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            text-align: center; 
+            margin: 0; 
+            padding: 20px; 
+        }
+
+        /* NEW ELECTRIC BLUE THEME: Cyan-Blue to Deep Sapphire metallic gradient */
+        h1 { 
+            background: linear-gradient(135deg, #00d2ff, #0066ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase; 
+            letter-spacing: 5px; 
+            margin-top: 40px;
+            font-weight: 900;
+            font-size: 38px;
+            filter: drop-shadow(0 2px 12px rgba(0, 102, 255, 0.3));
+            animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        p { 
+            color: #55657e; 
+            margin-bottom: 40px; 
+            font-size: 15px;
+            letter-spacing: 1px;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        /* Minimal responsive card grid layout */
+        .grid-container { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 35px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 20px; 
+        }
+
+        /* DARK MATTE CONTAINERS: Obsidian game panels with smooth transition rules */
+        .game-card { 
+            background-color: #0d0f17; 
+            border: 1px solid #1a2238; 
+            border-radius: 24px; 
+            padding: 18px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            /* Advanced easing for fluid, heavy-feeling animations */
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.4s ease, 
+                        box-shadow 0.5s ease;
+        }
+
+        /* HOVER INTERACTION: Card pops out smoothly with an ice-blue underglow aura */
+        .game-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            border-color: #00d2ff;
+            box-shadow: 0 20px 45px rgba(0, 210, 255, 0.25);
+        }
+
+        .game-card h3 { 
+            color: #ffffff; 
+            margin-top: 5px; 
+            margin-bottom: 15px;
+            font-size: 21px; 
+            letter-spacing: 0.5px;
+            font-weight: 700;
+        }
+
+        /* HD Embedded Sandbox Game Canvas */
+        .game-frame { 
+            border: none; 
+            border-radius: 16px; 
+            background: #020305; 
+            width: 100%; 
+            height: 400px; 
+        }
+
+        /* Keyframe Layout Engines */
+        @keyframes slideDown {
+            0% { opacity: 0; transform: translateY(-30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
     </style>
 </head>
 <body>
 
-    <h1> Play Pulse </h1> 
-    <p>Play Pulse: Your ultimate hub for premium unblocked games. Light, fast, and completely bypass-ready.</p> 
-    
-    <div class="grid-container"> 
-        <!-- GAME 1 --> 
-        <div class="game-card"> 
-            <h3>Space Invaders Classic</h3> 
-            <!-- FIXED: Direct working Scratch engine embed link -->
-            <iframe class="game-frame" src="https://mit.edu" allowtransparency="true" scrolling="no" allowfullscreen></iframe> 
-        </div> 
-        
-        <!-- GAME 2 --> 
-        <div class="game-card"> 
-            <h3>Retro Snake</h3> 
-            <!-- FIXED: Direct working Scratch engine embed link -->
-            <iframe class="game-frame" src="https://mit.edu" allowtransparency="true" scrolling="no" allowfullscreen></iframe> 
-        </div> 
+    <h1>Play Pulse</h1>
+    <p>Apex Games Official Unblocked Portal. Fast, clean, and bypass-optimized.</p>
+
+    <div class="grid-container">
+        <!-- GAME 1 -->
+        <div class="game-card">
+            <h3>Space Invaders Classic</h3>
+            <iframe class="game-frame" src="https://mit.edu" allowtransparency="true" scrolling="no" allowfullscreen></iframe>
+        </div>
+
+        <!-- GAME 2 -->
+        <div class="game-card">
+            <h3>Retro Snake</h3>
+            <iframe class="game-frame" src="https://mit.edu" allowtransparency="true" scrolling="no" allowfullscreen></iframe>
+        </div>
     </div>
 
 </body>
 </html>
+
+
