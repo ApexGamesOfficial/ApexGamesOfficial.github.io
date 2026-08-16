@@ -1,300 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <title>Play Pulse</title>
 
-    <title>Games • Play Pulse</title>
-
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
-
+    <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
+    <!-- ANIMATED BACKGROUND -->
+    <div class="animated-background">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+        <div class="glow glow-3"></div>
 
-<div class="animated-background">
-
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
-    <div class="glow glow-3"></div>
-
-    <div class="particles">
-
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-
-    </div>
-
-</div>
-
-
-<aside class="sidebar">
-
-    <div class="logo">
-
-        <h2>PLAY PULSE</h2>
-
-        <span>Apex Games</span>
-
+        <div class="particles">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
 
 
-    <div class="sidebar-title">
-        Main
-    </div>
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
 
-
-    <a
-        href="index.html"
-        class="nav-item"
-    >
-        <span class="nav-icon">🏠</span>
-        <span>Home</span>
-    </a>
-
-
-    <a
-        href="games.html"
-        class="nav-item active"
-    >
-        <span class="nav-icon">🎮</span>
-        <span>Games</span>
-    </a>
-
-
-    <a
-        href="featured.html"
-        class="nav-item"
-    >
-        <span class="nav-icon">⭐</span>
-        <span>Featured</span>
-    </a>
-
-
-    <a
-        href="popular.html"
-        class="nav-item"
-    >
-        <span class="nav-icon">🔥</span>
-        <span>Popular</span>
-    </a>
-
-
-    <div class="sidebar-title">
-        Library
-    </div>
-
-
-    <a
-        href="recent.html"
-        class="nav-item"
-    >
-        <span class="nav-icon">🕘</span>
-        <span>Recently Played</span>
-    </a>
-
-
-    <a
-        href="favorites.html"
-        class="nav-item"
-    >
-        <span class="nav-icon">❤️</span>
-        <span>Favorites</span>
-    </a>
-
-
-    <div class="sidebar-title">
-        More
-    </div>
-
-
-    <a
-        href="settings.html"
-        class="nav-item"
-    >
-        <span class="nav-icon">⚙️</span>
-        <span>Settings</span>
-    </a>
-
-
-    <a
-        href="about.html"
-        class="nav-item"
-    >
-        <span class="nav-icon">ℹ️</span>
-        <span>About</span>
-    </a>
-
-
-    <button
-        class="sound-control"
-        id="soundControl"
-    >
-
-        <span id="soundIcon">
-            🔊
-        </span>
-
-        <span id="soundText">
-            Sound On
-        </span>
-
-    </button>
-
-
-    <div class="sidebar-footer">
-
-        <strong>APEX GAMES</strong>
-
-        <br>
-
-        Play Pulse
-
-        <br>
-
-        Gaming Portal
-
-    </div>
-
-</aside>
-
-
-<main class="main-content">
-
-    <section class="page">
-
-        <div class="page-header">
-
-            <h1>
-                Games
-            </h1>
-
-            <p>
-                Browse the Play Pulse game library.
-            </p>
-
+        <div class="logo">
+            <h2>PLAY PULSE</h2>
+            <span>Apex Games</span>
         </div>
 
 
-        <!-- SEARCH -->
-
-        <div class="search-container">
-
-            <input
-                type="text"
-                id="gameSearch"
-                class="search-box"
-                placeholder="🔎 Search games..."
-            >
-
+        <div class="sidebar-title">
+            Main
         </div>
 
 
-        <!-- GAMES -->
-
-        <div class="game-grid">
-
-
-            <div
-                class="game-card"
-                data-game="Space Invaders Classic"
-            >
-
-                <div class="game-icon">
-                    👾
-                </div>
-
-                <h3>
-                    Space Invaders Classic
-                </h3>
-
-                <p>
-                    Arcade • Classic
-                </p>
-
-                <button class="play-button">
-                    Play
-                </button>
-
-            </div>
+        <a href="index.html" class="nav-item active">
+            <span class="nav-icon">🏠</span>
+            <span>Home</span>
+        </a>
 
 
-            <div
-                class="game-card"
-                data-game="Retro Snake"
-            >
-
-                <div class="game-icon">
-                    🐍
-                </div>
-
-                <h3>
-                    Retro Snake
-                </h3>
-
-                <p>
-                    Arcade • Classic
-                </p>
-
-                <button class="play-button">
-                    Play
-                </button>
-
-            </div>
+        <a href="games.html" class="nav-item">
+            <span class="nav-icon">🎮</span>
+            <span>Games</span>
+        </a>
 
 
-            <div
-                class="game-card"
-                data-game="Coming Soon"
-            >
-
-                <div class="game-icon">
-                    🎮
-                </div>
-
-                <h3>
-                    Coming Soon
-                </h3>
-
-                <p>
-                    More games are being added.
-                </p>
-
-                <button class="play-button">
-                    Coming Soon
-                </button>
-
-            </div>
+        <a href="featured.html" class="nav-item">
+            <span class="nav-icon">⭐</span>
+            <span>Featured</span>
+        </a>
 
 
+        <a href="popular.html" class="nav-item">
+            <span class="nav-icon">🔥</span>
+            <span>Popular</span>
+        </a>
+
+
+        <div class="sidebar-title">
+            Library
         </div>
 
-    </section>
 
-</main>
+        <a href="recent.html" class="nav-item">
+            <span class="nav-icon">🕘</span>
+            <span>Recently Played</span>
+        </a>
 
 
-<script src="script.js"></script>
+        <a href="favorites.html" class="nav-item">
+            <span class="nav-icon">❤️</span>
+            <span>Favorites</span>
+        </a>
+
+
+        <div class="sidebar-title">
+            More
+        </div>
+
+
+        <a href="settings.html" class="nav-item">
+            <span class="nav-icon">⚙️</span>
+            <span>Settings</span>
+        </a>
+
+
+        <a href="about.html" class="nav-item">
+            <span class="nav-icon">ℹ️</span>
+            <span>About</span>
+        </a>
+
+
+        <!-- SOUND -->
+        <button class="sound-control" id="soundControl">
+            <span id="soundIcon">🔊</span>
+            <span id="soundText">Sound On</span>
+        </button>
+
+
+        <div class="sidebar-footer">
+            <strong>APEX GAMES</strong>
+            <br>
+            Play Pulse
+            <br>
+            Gaming Portal
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <section class="page home-page">
+
+            <div class="home-wrapper">
+
+                <h1 class="home-logo">
+                    PLAY PULSE
+                </h1>
+
+
+                <div class="home-line"></div>
+
+
+                <div class="home-subtitle">
+                    Apex Games
+                </div>
+
+
+                <!-- UPDATE LOG -->
+                <div class="update-log">
+
+                    <div class="update-log-header">
+
+                        <h3>
+                            📝 Latest Update
+                        </h3>
+
+                        <span class="version">
+                            v0.1
+                        </span>
+
+                    </div>
+
+
+                    <ul>
+
+                        <li>
+                            Play Pulse initial test build
+                        </li>
+
+                        <li>
+                            New sleek blue interface
+                        </li>
+
+                        <li>
+                            New sidebar navigation
+                        </li>
+
+                        <li>
+                            Animated background
+                        </li>
+
+                        <li>
+                            Game search foundation added
+                        </li>
+
+                        <li>
+                            Audio system coming online
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
 
 </body>
-
 </html>
