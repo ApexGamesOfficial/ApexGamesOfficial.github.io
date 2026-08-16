@@ -22,12 +22,113 @@
         }
 
         body {
+            margin: 0;
+            min-height: 100vh;
             background: var(--background);
             color: var(--text);
             font-family: system-ui, -apple-system, BlinkMacSystemFont,
-                         'Segoe UI', Roboto, sans-serif;
-            margin: 0;
-            min-height: 100vh;
+                         "Segoe UI", Roboto, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           ANIMATED BACKGROUND
+        ========================= */
+
+        .animated-background {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .glow {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            background: rgba(22, 140, 255, 0.07);
+            filter: blur(90px);
+            animation: floatingGlow 14s ease-in-out infinite alternate;
+        }
+
+        .glow-1 {
+            top: -180px;
+            left: 15%;
+        }
+
+        .glow-2 {
+            right: -150px;
+            bottom: -150px;
+            animation-delay: -5s;
+        }
+
+        .glow-3 {
+            top: 45%;
+            left: 50%;
+            animation-delay: -9s;
+        }
+
+        .particles span {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--pulse-blue);
+            box-shadow: 0 0 10px rgba(22, 140, 255, 0.8);
+            opacity: 0.35;
+            animation: floatParticle linear infinite;
+        }
+
+        .particles span:nth-child(1) {
+            left: 8%;
+            animation-duration: 14s;
+        }
+
+        .particles span:nth-child(2) {
+            left: 18%;
+            animation-duration: 19s;
+        }
+
+        .particles span:nth-child(3) {
+            left: 29%;
+            animation-duration: 12s;
+        }
+
+        .particles span:nth-child(4) {
+            left: 40%;
+            animation-duration: 21s;
+        }
+
+        .particles span:nth-child(5) {
+            left: 51%;
+            animation-duration: 16s;
+        }
+
+        .particles span:nth-child(6) {
+            left: 62%;
+            animation-duration: 18s;
+        }
+
+        .particles span:nth-child(7) {
+            left: 72%;
+            animation-duration: 13s;
+        }
+
+        .particles span:nth-child(8) {
+            left: 82%;
+            animation-duration: 20s;
+        }
+
+        .particles span:nth-child(9) {
+            left: 91%;
+            animation-duration: 15s;
+        }
+
+        .particles span:nth-child(10) {
+            left: 55%;
+            animation-duration: 23s;
         }
 
         /* =========================
@@ -41,18 +142,18 @@
             width: 245px;
             height: 100vh;
 
-            background: rgba(11, 14, 21, 0.96);
-            border-right: 1px solid var(--border);
-
             padding: 25px 16px;
+
+            background: rgba(11, 14, 21, 0.94);
+            border-right: 1px solid var(--border);
 
             display: flex;
             flex-direction: column;
 
             z-index: 1000;
-        }
 
-        /* PLAY PULSE LOGO */
+            backdrop-filter: blur(18px);
+        }
 
         .logo {
             text-align: center;
@@ -61,41 +162,37 @@
 
         .logo h2 {
             margin: 0;
+            color: var(--pulse-blue);
 
             font-size: 24px;
             font-weight: 900;
             letter-spacing: 3px;
 
-            color: var(--pulse-blue);
-
             text-shadow:
-                0 0 15px rgba(22, 140, 255, 0.35);
+                0 0 15px rgba(22, 140, 255, 0.4);
         }
 
         .logo span {
             display: block;
+            margin-top: 4px;
 
             color: #56657a;
             font-size: 10px;
             letter-spacing: 2px;
-
-            margin-top: 4px;
             text-transform: uppercase;
         }
 
-        /* SIDEBAR SECTIONS */
-
         .sidebar-title {
+            margin: 18px 12px 8px;
+
             color: #4d5b70;
+
             font-size: 11px;
             font-weight: 700;
             letter-spacing: 1.5px;
 
-            margin: 18px 12px 8px;
             text-transform: uppercase;
         }
-
-        /* NAVIGATION BUTTONS */
 
         .nav-item {
             display: flex;
@@ -123,7 +220,6 @@
         .nav-item:hover {
             background: rgba(22, 140, 255, 0.10);
             color: #ffffff;
-
             transform: translateX(3px);
         }
 
@@ -141,8 +237,6 @@
             font-size: 17px;
         }
 
-        /* SIDEBAR FOOTER */
-
         .sidebar-footer {
             margin-top: auto;
 
@@ -151,6 +245,7 @@
             border-top: 1px solid var(--border);
 
             color: #4f5d71;
+
             font-size: 11px;
             line-height: 1.5;
         }
@@ -165,167 +260,145 @@
 
         .main-content {
             margin-left: 245px;
-
-            padding: 30px;
             min-height: 100vh;
+            position: relative;
         }
 
-        /* HEADER */
+        /* =========================
+           HOME SCREEN
+        ========================= */
 
-        .page-header {
-            max-width: 1200px;
-            margin: 20px auto 0;
+        .home-screen {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
             text-align: center;
         }
 
-        h1 {
-            background: linear-gradient(
-                135deg,
-                var(--pulse-blue-light),
-                var(--pulse-blue)
-            );
+        .home-logo {
+            animation:
+                logoAppear 1.2s
+                cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .home-logo h1 {
+            margin: 0;
+
+            font-size: clamp(55px, 8vw, 105px);
+
+            font-weight: 1000;
+            letter-spacing: 10px;
+
+            text-transform: uppercase;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #38A7FF,
+                    #168CFF,
+                    #0757B8
+                );
 
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
 
-            text-transform: uppercase;
-            letter-spacing: 5px;
-
-            margin-top: 20px;
-            margin-bottom: 8px;
-
-            font-weight: 900;
-            font-size: 38px;
-
             filter:
                 drop-shadow(
-                    0 2px 12px
-                    rgba(22, 140, 255, 0.3)
+                    0 0 25px
+                    rgba(22, 140, 255, 0.35)
                 );
-
-            animation:
-                slideDown 0.8s
-                cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .page-header p {
-            color: var(--muted);
+        .home-logo p {
+            margin-top: 10px;
 
-            margin-bottom: 40px;
+            color: #65758b;
 
-            font-size: 15px;
-            letter-spacing: 1px;
+            font-size: 14px;
+            letter-spacing: 5px;
 
-            animation:
-                fadeIn 1.2s ease-in-out;
+            text-transform: uppercase;
         }
 
-        /* =========================
-           GAME GRID
-        ========================= */
+        .home-line {
+            width: 100px;
+            height: 2px;
 
-        .grid-container {
-            display: grid;
+            margin: 25px auto;
 
-            grid-template-columns:
-                repeat(
-                    auto-fit,
-                    minmax(320px, 1fr)
-                );
-
-            gap: 35px;
-
-            max-width: 1200px;
-
-            margin: 0 auto;
-
-            padding: 20px;
-        }
-
-        /* GAME CARD */
-
-        .game-card {
-            background: var(--card);
-
-            border: 1px solid var(--border);
-
-            border-radius: 24px;
-
-            padding: 18px;
+            background: var(--pulse-blue);
 
             box-shadow:
-                0 10px 40px
-                rgba(0, 0, 0, 0.6);
+                0 0 15px
+                rgba(22, 140, 255, 0.7);
 
-            transition:
-                transform 0.5s
-                cubic-bezier(0.16, 1, 0.3, 1),
-                border-color 0.4s ease,
-                box-shadow 0.5s ease;
-        }
-
-        .game-card:hover {
-            transform:
-                translateY(-12px)
-                scale(1.03);
-
-            border-color:
-                var(--pulse-blue);
-
-            box-shadow:
-                0 20px 45px
-                rgba(22, 140, 255, 0.25);
-        }
-
-        .game-card h3 {
-            color: #ffffff;
-
-            margin-top: 5px;
-            margin-bottom: 15px;
-
-            font-size: 21px;
-            letter-spacing: 0.5px;
-
-            font-weight: 700;
-        }
-
-        /* GAME FRAME */
-
-        .game-frame {
-            border: none;
-
-            border-radius: 16px;
-
-            background: #020305;
-
-            width: 100%;
-            height: 400px;
+            animation: linePulse 2.5s ease-in-out infinite;
         }
 
         /* =========================
            ANIMATIONS
         ========================= */
 
-        @keyframes slideDown {
+        @keyframes floatingGlow {
             0% {
-                opacity: 0;
-                transform: translateY(-30px);
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(80px, -60px) scale(1.15);
             }
 
             100% {
-                opacity: 1;
-                transform: translateY(0);
+                transform: translate(-50px, 50px) scale(0.95);
             }
         }
 
-        @keyframes fadeIn {
+        @keyframes floatParticle {
+            0% {
+                top: 110vh;
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 0.4;
+            }
+
+            85% {
+                opacity: 0.4;
+            }
+
+            100% {
+                top: -10vh;
+                opacity: 0;
+            }
+        }
+
+        @keyframes logoAppear {
             0% {
                 opacity: 0;
+                transform: scale(0.85);
+                filter: blur(10px);
             }
 
             100% {
                 opacity: 1;
+                transform: scale(1);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes linePulse {
+            0%, 100% {
+                opacity: 0.4;
+                transform: scaleX(0.7);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scaleX(1);
             }
         }
 
@@ -363,16 +436,16 @@
 
             .main-content {
                 margin-left: 70px;
-                padding: 15px;
             }
 
-            h1 {
-                font-size: 28px;
+            .home-logo h1 {
+                font-size: 45px;
+                letter-spacing: 5px;
             }
 
-            .grid-container {
-                grid-template-columns: 1fr;
-                padding: 10px;
+            .home-logo p {
+                font-size: 10px;
+                letter-spacing: 3px;
             }
         }
     </style>
@@ -381,8 +454,34 @@
 <body>
 
     <!-- =========================
+         ANIMATED BACKGROUND
+    ========================= -->
+
+    <div class="animated-background">
+
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+        <div class="glow glow-3"></div>
+
+        <div class="particles">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </div>
+
+
+    <!-- =========================
          SIDEBAR
-    ========================== -->
+    ========================= -->
 
     <aside class="sidebar">
 
@@ -391,9 +490,11 @@
             <span>Apex Games</span>
         </div>
 
+
         <div class="sidebar-title">
             Main
         </div>
+
 
         <a href="#" class="nav-item active">
             <span class="nav-icon">🏠</span>
@@ -411,13 +512,15 @@
         </a>
 
         <a href="#" class="nav-item">
-            <span class="nav-icon">🆕</span>
-            <span>New Games</span>
+            <span class="nav-icon">🔥</span>
+            <span>Popular</span>
         </a>
+
 
         <div class="sidebar-title">
             Categories
         </div>
+
 
         <a href="#" class="nav-item">
             <span class="nav-icon">👾</span>
@@ -439,9 +542,11 @@
             <span>Strategy</span>
         </a>
 
+
         <div class="sidebar-title">
             More
         </div>
+
 
         <a href="#" class="nav-item">
             <span class="nav-icon">⚙️</span>
@@ -452,6 +557,7 @@
             <span class="nav-icon">ℹ️</span>
             <span>About</span>
         </a>
+
 
         <div class="sidebar-footer">
             <strong>APEX GAMES</strong><br>
@@ -464,67 +570,27 @@
 
     <!-- =========================
          MAIN CONTENT
-    ========================== -->
+    ========================= -->
 
     <main class="main-content">
 
-        <header class="page-header">
+        <section class="home-screen">
 
-            <h1>Play Pulse</h1>
+            <div class="home-logo">
 
-            <p>
-                Apex Games Official Gaming Portal.
-                Fast, clean, and built for gaming.
-            </p>
+                <h1>PLAY PULSE</h1>
 
-        </header>
+                <div class="home-line"></div>
 
-
-        <!-- GAME GRID -->
-
-        <div class="grid-container">
-
-            <!-- GAME 1 -->
-
-            <div class="game-card">
-
-                <h3>
-                    Space Invaders Classic
-                </h3>
-
-                <iframe
-                    class="game-frame"
-                    src="https://mit.edu"
-                    scrolling="no"
-                    allowfullscreen>
-                </iframe>
+                <p>Apex Games</p>
 
             </div>
 
-
-            <!-- GAME 2 -->
-
-            <div class="game-card">
-
-                <h3>
-                    Retro Snake
-                </h3>
-
-                <iframe
-                    class="game-frame"
-                    src="https://mit.edu"
-                    scrolling="no"
-                    allowfullscreen>
-                </iframe>
-
-            </div>
-
-        </div>
+        </section>
 
     </main>
 
 </body>
 </html>
-
 
 
