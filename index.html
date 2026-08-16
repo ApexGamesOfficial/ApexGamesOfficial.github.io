@@ -1,673 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Play Pulse</title>
 
-    <style>
-        :root {
-            --pulse-blue: #168CFF;
-            --pulse-blue-light: #38A7FF;
-            --background: #06070a;
-            --sidebar: #0b0e15;
-            --card: #0d0f17;
-            --border: #1a2238;
-            --text: #ffffff;
-            --muted: #718096;
-        }
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            min-height: 100vh;
-            background: var(--background);
-            color: var(--text);
-            font-family: system-ui, -apple-system, BlinkMacSystemFont,
-                         "Segoe UI", Roboto, sans-serif;
-            overflow-x: hidden;
-        }
-
-        /* =================================
-           ANIMATED BACKGROUND
-        ================================= */
-
-        .animated-background {
-            position: fixed;
-            inset: 0;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .glow {
-            position: absolute;
-            width: 450px;
-            height: 450px;
-            border-radius: 50%;
-            background: rgba(22, 140, 255, 0.07);
-            filter: blur(90px);
-            animation: floatingGlow 14s ease-in-out infinite alternate;
-        }
-
-        .glow-1 {
-            top: -180px;
-            left: 15%;
-        }
-
-        .glow-2 {
-            right: -150px;
-            bottom: -150px;
-            animation-delay: -5s;
-        }
-
-        .glow-3 {
-            top: 45%;
-            left: 50%;
-            animation-delay: -9s;
-        }
-
-        .particles span {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            border-radius: 50%;
-            background: var(--pulse-blue);
-            box-shadow: 0 0 10px rgba(22, 140, 255, 0.8);
-            opacity: 0.35;
-            animation: floatParticle linear infinite;
-        }
-
-        .particles span:nth-child(1) {
-            left: 8%;
-            animation-duration: 14s;
-        }
-
-        .particles span:nth-child(2) {
-            left: 18%;
-            animation-duration: 19s;
-        }
-
-        .particles span:nth-child(3) {
-            left: 29%;
-            animation-duration: 12s;
-        }
-
-        .particles span:nth-child(4) {
-            left: 40%;
-            animation-duration: 21s;
-        }
-
-        .particles span:nth-child(5) {
-            left: 51%;
-            animation-duration: 16s;
-        }
-
-        .particles span:nth-child(6) {
-            left: 62%;
-            animation-duration: 18s;
-        }
-
-        .particles span:nth-child(7) {
-            left: 72%;
-            animation-duration: 13s;
-        }
-
-        .particles span:nth-child(8) {
-            left: 82%;
-            animation-duration: 20s;
-        }
-
-        .particles span:nth-child(9) {
-            left: 91%;
-            animation-duration: 15s;
-        }
-
-        .particles span:nth-child(10) {
-            left: 55%;
-            animation-duration: 23s;
-        }
-
-        /* =================================
-           SIDEBAR
-        ================================= */
-
-        .sidebar {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 245px;
-            height: 100vh;
-
-            padding: 25px 16px;
-
-            background: rgba(11, 14, 21, 0.94);
-            border-right: 1px solid var(--border);
-
-            display: flex;
-            flex-direction: column;
-
-            z-index: 1000;
-
-            backdrop-filter: blur(18px);
-        }
-
-        .logo {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .logo h2 {
-            margin: 0;
-            color: var(--pulse-blue);
-
-            font-size: 24px;
-            font-weight: 900;
-            letter-spacing: 3px;
-
-            text-shadow:
-                0 0 15px rgba(22, 140, 255, 0.4);
-        }
-
-        .logo span {
-            display: block;
-            margin-top: 4px;
-
-            color: #56657a;
-            font-size: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .sidebar-title {
-            margin: 18px 12px 8px;
-
-            color: #4d5b70;
-
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-
-            text-transform: uppercase;
-        }
-
-        .nav-item {
-            display: flex;
-            align-items: center;
-
-            gap: 12px;
-
-            width: 100%;
-            padding: 12px 14px;
-            margin: 4px 0;
-
-            border: none;
-            border-radius: 10px;
-
-            background: transparent;
-
-            color: #aeb9c9;
-            text-decoration: none;
-
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 600;
-
-            text-align: left;
-            cursor: pointer;
-
-            transition:
-                background 0.2s ease,
-                color 0.2s ease,
-                transform 0.2s ease;
-        }
-
-        .nav-item:hover {
-            background: rgba(22, 140, 255, 0.10);
-            color: #ffffff;
-            transform: translateX(3px);
-        }
-
-        .nav-item.active {
-            background: rgba(22, 140, 255, 0.16);
-            color: var(--pulse-blue-light);
-
-            box-shadow:
-                inset 3px 0 0 var(--pulse-blue);
-        }
-
-        .nav-icon {
-            width: 22px;
-            min-width: 22px;
-            text-align: center;
-            font-size: 17px;
-        }
-
-        .sidebar-footer {
-            margin-top: auto;
-
-            padding: 14px;
-
-            border-top: 1px solid var(--border);
-
-            color: #4f5d71;
-
-            font-size: 11px;
-            line-height: 1.5;
-        }
-
-        .sidebar-footer strong {
-            color: #73849b;
-        }
-
-        /* =================================
-           MAIN CONTENT
-        ================================= */
-
-        .main-content {
-            margin-left: 245px;
-            min-height: 100vh;
-            position: relative;
-        }
-
-        /* =================================
-           PAGE SYSTEM
-        ================================= */
-
-        .page {
-            display: none;
-            min-height: 100vh;
-            padding: 50px;
-            animation: pageAppear 0.45s ease;
-        }
-
-        .page.active-page {
-            display: block;
-        }
-
-        /* =================================
-           HOME
-        ================================= */
-
-        .home-screen {
-            min-height: 100vh;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            text-align: center;
-        }
-
-        .home-logo {
-            animation:
-                logoAppear 1.2s
-                cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .home-logo h1 {
-            margin: 0;
-
-            font-size: clamp(55px, 8vw, 105px);
-
-            font-weight: 1000;
-            letter-spacing: 10px;
-
-            text-transform: uppercase;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #38A7FF,
-                    #168CFF,
-                    #0757B8
-                );
-
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-
-            filter:
-                drop-shadow(
-                    0 0 25px
-                    rgba(22, 140, 255, 0.35)
-                );
-        }
-
-        .home-logo p {
-            margin-top: 10px;
-
-            color: #65758b;
-
-            font-size: 14px;
-            letter-spacing: 5px;
-
-            text-transform: uppercase;
-        }
-
-        .home-line {
-            width: 100px;
-            height: 2px;
-
-            margin: 25px auto;
-
-            background: var(--pulse-blue);
-
-            box-shadow:
-                0 0 15px
-                rgba(22, 140, 255, 0.7);
-
-            animation:
-                linePulse 2.5s ease-in-out infinite;
-        }
-
-        /* =================================
-           PAGE HEADERS
-        ================================= */
-
-        .page-header {
-            max-width: 1200px;
-            margin: 0 auto 35px;
-        }
-
-        .page-header h1 {
-            margin: 0 0 8px;
-
-            font-size: 38px;
-            font-weight: 900;
-
-            color: var(--pulse-blue-light);
-
-            letter-spacing: 2px;
-        }
-
-        .page-header p {
-            margin: 0;
-
-            color: var(--muted);
-            font-size: 15px;
-        }
-
-        /* =================================
-           GAME GRID
-        ================================= */
-
-        .game-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(
-                    auto-fit,
-                    minmax(240px, 1fr)
-                );
-
-            gap: 25px;
-        }
-
-        .game-card {
-            min-height: 190px;
-
-            padding: 20px;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(20, 25, 38, 0.95),
-                    rgba(10, 12, 18, 0.95)
-                );
-
-            border: 1px solid var(--border);
-            border-radius: 18px;
-
-            box-shadow:
-                0 10px 35px rgba(0, 0, 0, 0.45);
-
-            transition:
-                transform 0.3s ease,
-                border-color 0.3s ease,
-                box-shadow 0.3s ease;
-        }
-
-        .game-card:hover {
-            transform: translateY(-7px);
-
-            border-color:
-                var(--pulse-blue);
-
-            box-shadow:
-                0 15px 35px
-                rgba(22, 140, 255, 0.18);
-        }
-
-        .game-card .game-icon {
-            font-size: 42px;
-            margin-bottom: auto;
-        }
-
-        .game-card h3 {
-            margin: 0 0 6px;
-
-            color: #ffffff;
-
-            font-size: 19px;
-        }
-
-        .game-card p {
-            margin: 0;
-
-            color: var(--muted);
-
-            font-size: 13px;
-        }
-
-        .play-button {
-            margin-top: 15px;
-
-            padding: 10px 15px;
-
-            border: none;
-            border-radius: 8px;
-
-            background: var(--pulse-blue);
-            color: white;
-
-            font-family: inherit;
-            font-weight: 700;
-
-            cursor: pointer;
-
-            transition:
-                background 0.2s ease,
-                transform 0.2s ease;
-        }
-
-        .play-button:hover {
-            background: var(--pulse-blue-light);
-            transform: scale(1.03);
-        }
-
-        /* =================================
-           SIMPLE INFO PAGES
-        ================================= */
-
-        .info-box {
-            max-width: 900px;
-            margin: 50px auto;
-
-            padding: 35px;
-
-            background: rgba(13, 15, 23, 0.82);
-
-            border: 1px solid var(--border);
-            border-radius: 20px;
-
-            text-align: center;
-
-            box-shadow:
-                0 15px 45px rgba(0, 0, 0, 0.45);
-
-            backdrop-filter: blur(10px);
-        }
-
-        .info-box .big-icon {
-            font-size: 55px;
-            margin-bottom: 15px;
-        }
-
-        .info-box h2 {
-            margin: 0 0 10px;
-
-            color: var(--pulse-blue-light);
-        }
-
-        .info-box p {
-            color: var(--muted);
-            line-height: 1.7;
-        }
-
-        /* =================================
-           ANIMATIONS
-        ================================= */
-
-        @keyframes floatingGlow {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-
-            50% {
-                transform: translate(80px, -60px) scale(1.15);
-            }
-
-            100% {
-                transform: translate(-50px, 50px) scale(0.95);
-            }
-        }
-
-        @keyframes floatParticle {
-            0% {
-                top: 110vh;
-                opacity: 0;
-            }
-
-            15% {
-                opacity: 0.4;
-            }
-
-            85% {
-                opacity: 0.4;
-            }
-
-            100% {
-                top: -10vh;
-                opacity: 0;
-            }
-        }
-
-        @keyframes logoAppear {
-            0% {
-                opacity: 0;
-                transform: scale(0.85);
-                filter: blur(10px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: scale(1);
-                filter: blur(0);
-            }
-        }
-
-        @keyframes linePulse {
-            0%, 100% {
-                opacity: 0.4;
-                transform: scaleX(0.7);
-            }
-
-            50% {
-                opacity: 1;
-                transform: scaleX(1);
-            }
-        }
-
-        @keyframes pageAppear {
-            from {
-                opacity: 0;
-                transform: translateY(8px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* =================================
-           MOBILE
-        ================================= */
-
-        @media (max-width: 700px) {
-
-            .sidebar {
-                width: 70px;
-                padding: 20px 8px;
-            }
-
-            .logo h2 {
-                font-size: 0;
-            }
-
-            .logo h2::after {
-                content: "P";
-                font-size: 24px;
-            }
-
-            .logo span,
-            .sidebar-title,
-            .nav-item span:not(.nav-icon),
-            .sidebar-footer {
-                display: none;
-            }
-
-            .nav-item {
-                justify-content: center;
-                padding: 13px 5px;
-            }
-
-            .main-content {
-                margin-left: 70px;
-            }
-
-            .page {
-                padding: 30px 20px;
-            }
-
-            .home-logo h1 {
-                font-size: 45px;
-                letter-spacing: 5px;
-            }
-
-            .home-logo p {
-                font-size: 10px;
-                letter-spacing: 3px;
-            }
-        }
-    </style>
 </head>
+
 
 <body>
 
-    <!-- =================================
-         ANIMATED BACKGROUND
-    ================================= -->
+
+    <!-- BACKGROUND -->
 
     <div class="animated-background">
 
@@ -676,6 +32,7 @@
         <div class="glow glow-3"></div>
 
         <div class="particles">
+
             <span></span>
             <span></span>
             <span></span>
@@ -686,20 +43,22 @@
             <span></span>
             <span></span>
             <span></span>
+
         </div>
 
     </div>
 
 
-    <!-- =================================
-         SIDEBAR
-    ================================= -->
+    <!-- SIDEBAR -->
 
     <aside class="sidebar">
 
         <div class="logo">
+
             <h2>PLAY PULSE</h2>
+
             <span>Apex Games</span>
+
         </div>
 
 
@@ -708,51 +67,81 @@
         </div>
 
 
-        <button class="nav-item active" data-page="home">
+        <a
+            href="index.html"
+            class="nav-item active"
+        >
+
             <span class="nav-icon">🏠</span>
+
             <span>Home</span>
-        </button>
 
-        <button class="nav-item" data-page="games">
+        </a>
+
+
+        <a
+            href="games.html"
+            class="nav-item"
+        >
+
             <span class="nav-icon">🎮</span>
+
             <span>Games</span>
-        </button>
 
-        <button class="nav-item" data-page="featured">
+        </a>
+
+
+        <a
+            href="featured.html"
+            class="nav-item"
+        >
+
             <span class="nav-icon">⭐</span>
-            <span>Featured</span>
-        </button>
 
-        <button class="nav-item" data-page="popular">
+            <span>Featured</span>
+
+        </a>
+
+
+        <a
+            href="popular.html"
+            class="nav-item"
+        >
+
             <span class="nav-icon">🔥</span>
+
             <span>Popular</span>
-        </button>
+
+        </a>
 
 
         <div class="sidebar-title">
-            Categories
+            Library
         </div>
 
 
-        <button class="nav-item" data-page="arcade">
-            <span class="nav-icon">👾</span>
-            <span>Arcade</span>
-        </button>
+        <a
+            href="recent.html"
+            class="nav-item"
+        >
 
-        <button class="nav-item" data-page="action">
-            <span class="nav-icon">⚔️</span>
-            <span>Action</span>
-        </button>
+            <span class="nav-icon">🕘</span>
 
-        <button class="nav-item" data-page="puzzle">
-            <span class="nav-icon">🧩</span>
-            <span>Puzzle</span>
-        </button>
+            <span>Recently Played</span>
 
-        <button class="nav-item" data-page="strategy">
-            <span class="nav-icon">🏆</span>
-            <span>Strategy</span>
-        </button>
+        </a>
+
+
+        <a
+            href="favorites.html"
+            class="nav-item"
+        >
+
+            <span class="nav-icon">❤️</span>
+
+            <span>Favorites</span>
+
+        </a>
 
 
         <div class="sidebar-title">
@@ -760,319 +149,140 @@
         </div>
 
 
-        <button class="nav-item" data-page="settings">
-            <span class="nav-icon">⚙️</span>
-            <span>Settings</span>
-        </button>
+        <a
+            href="settings.html"
+            class="nav-item"
+        >
 
-        <button class="nav-item" data-page="about">
+            <span class="nav-icon">⚙️</span>
+
+            <span>Settings</span>
+
+        </a>
+
+
+        <a
+            href="about.html"
+            class="nav-item"
+        >
+
             <span class="nav-icon">ℹ️</span>
+
             <span>About</span>
+
+        </a>
+
+
+        <!-- SOUND -->
+
+        <button
+            class="sound-control"
+            id="soundControl"
+        >
+
+            <span id="soundIcon">
+                🔊
+            </span>
+
+            <span id="soundText">
+                Sound On
+            </span>
+
         </button>
 
 
         <div class="sidebar-footer">
-            <strong>APEX GAMES</strong><br>
-            Play Pulse<br>
+
+            <strong>
+                APEX GAMES
+            </strong>
+
+            <br>
+
+            Play Pulse
+
+            <br>
+
             Gaming Portal
+
         </div>
 
     </aside>
 
 
-    <!-- =================================
-         MAIN CONTENT
-    ================================= -->
+    <!-- MAIN -->
 
     <main class="main-content">
 
+        <section class="page home-page">
 
-        <!-- HOME -->
+            <div class="home-wrapper">
 
-        <section id="home" class="page active-page home-screen">
+                <h1 class="home-logo">
+                    PLAY PULSE
+                </h1>
 
-            <div class="home-logo">
-
-                <h1>PLAY PULSE</h1>
 
                 <div class="home-line"></div>
 
-                <p>Apex Games</p>
 
-            </div>
-
-        </section>
-
-
-        <!-- GAMES -->
-
-        <section id="games" class="page">
-
-            <div class="page-header">
-                <h1>Games</h1>
-                <p>Browse the Play Pulse game library.</p>
-            </div>
-
-            <div class="game-grid">
-
-                <div class="game-card">
-                    <div class="game-icon">👾</div>
-                    <h3>Space Invaders Classic</h3>
-                    <p>Arcade • Classic</p>
-                    <button class="play-button">Play</button>
+                <div class="home-subtitle">
+                    Apex Games
                 </div>
 
-                <div class="game-card">
-                    <div class="game-icon">🐍</div>
-                    <h3>Retro Snake</h3>
-                    <p>Arcade • Classic</p>
-                    <button class="play-button">Play</button>
-                </div>
 
-                <div class="game-card">
-                    <div class="game-icon">🎮</div>
-                    <h3>Coming Soon</h3>
-                    <p>More games are on the way.</p>
-                    <button class="play-button">Coming Soon</button>
-                </div>
+                <!-- UPDATE LOG -->
 
-            </div>
+                <div class="update-log">
 
-        </section>
+                    <div class="update-log-header">
 
+                        <h3>
+                            📝 Latest Update
+                        </h3>
 
-        <!-- FEATURED -->
+                        <span class="version">
+                            v0.3
+                        </span>
 
-        <section id="featured" class="page">
-
-            <div class="page-header">
-                <h1>Featured</h1>
-                <p>Games selected by Apex Games.</p>
-            </div>
-
-            <div class="info-box">
-                <div class="big-icon">⭐</div>
-                <h2>Featured Games</h2>
-                <p>
-                    This is where the best games on Play Pulse
-                    will be highlighted.
-                </p>
-            </div>
-
-        </section>
+                    </div>
 
 
-        <!-- POPULAR -->
+                    <ul>
 
-        <section id="popular" class="page">
+                        <li>
+                            Added separate website pages
+                        </li>
 
-            <div class="page-header">
-                <h1>Popular</h1>
-                <p>See what players are playing.</p>
-            </div>
+                        <li>
+                            Added Play Pulse audio system
+                        </li>
 
-            <div class="info-box">
-                <div class="big-icon">🔥</div>
-                <h2>Popular Games</h2>
-                <p>
-                    Popular games will appear here once
-                    Play Pulse has a game library.
-                </p>
-            </div>
+                        <li>
+                            Added navigation sounds
+                        </li>
 
-        </section>
+                        <li>
+                            Added game search foundation
+                        </li>
 
+                        <li>
+                            More games coming soon
+                        </li>
 
-        <!-- ARCADE -->
+                    </ul>
 
-        <section id="arcade" class="page">
-
-            <div class="page-header">
-                <h1>Arcade</h1>
-                <p>Classic and fast-paced arcade games.</p>
-            </div>
-
-            <div class="game-grid">
-
-                <div class="game-card">
-                    <div class="game-icon">👾</div>
-                    <h3>Space Invaders Classic</h3>
-                    <p>Arcade</p>
-                    <button class="play-button">Play</button>
-                </div>
-
-                <div class="game-card">
-                    <div class="game-icon">🐍</div>
-                    <h3>Retro Snake</h3>
-                    <p>Arcade</p>
-                    <button class="play-button">Play</button>
                 </div>
 
             </div>
 
         </section>
-
-
-        <!-- ACTION -->
-
-        <section id="action" class="page">
-
-            <div class="page-header">
-                <h1>Action</h1>
-                <p>Fast-paced games and intense gameplay.</p>
-            </div>
-
-            <div class="info-box">
-                <div class="big-icon">⚔️</div>
-                <h2>Action Games</h2>
-                <p>
-                    Action games will appear here.
-                </p>
-            </div>
-
-        </section>
-
-
-        <!-- PUZZLE -->
-
-        <section id="puzzle" class="page">
-
-            <div class="page-header">
-                <h1>Puzzle</h1>
-                <p>Put your brain to the test.</p>
-            </div>
-
-            <div class="info-box">
-                <div class="big-icon">🧩</div>
-                <h2>Puzzle Games</h2>
-                <p>
-                    Puzzle games will appear here.
-                </p>
-            </div>
-
-        </section>
-
-
-        <!-- STRATEGY -->
-
-        <section id="strategy" class="page">
-
-            <div class="page-header">
-                <h1>Strategy</h1>
-                <p>Plan your moves and outsmart the competition.</p>
-            </div>
-
-            <div class="info-box">
-                <div class="big-icon">🏆</div>
-                <h2>Strategy Games</h2>
-                <p>
-                    Strategy games will appear here.
-                </p>
-            </div>
-
-        </section>
-
-
-        <!-- SETTINGS -->
-
-        <section id="settings" class="page">
-
-            <div class="page-header">
-                <h1>Settings</h1>
-                <p>Customize your Play Pulse experience.</p>
-            </div>
-
-            <div class="info-box">
-                <div class="big-icon">⚙️</div>
-                <h2>Settings</h2>
-                <p>
-                    Settings will be added here later.
-                </p>
-            </div>
-
-        </section>
-
-
-        <!-- ABOUT -->
-
-        <section id="about" class="page">
-
-            <div class="page-header">
-                <h1>About</h1>
-                <p>Learn more about Play Pulse.</p>
-            </div>
-
-            <div class="info-box">
-                <div class="big-icon">ℹ️</div>
-
-                <h2>Play Pulse</h2>
-
-                <p>
-                    Play Pulse is a gaming portal created by
-                    Apex Games.
-                </p>
-
-                <p>
-                    Built to be fast, clean, and easy to use.
-                </p>
-            </div>
-
-        </section>
-
 
     </main>
 
 
-    <!-- =================================
-         JAVASCRIPT
-    ================================= -->
-
-    <script>
-
-        const navItems = document.querySelectorAll(".nav-item");
-        const pages = document.querySelectorAll(".page");
-
-
-        navItems.forEach(item => {
-
-            item.addEventListener("click", () => {
-
-                const pageId = item.dataset.page;
-
-
-                /* Remove active state from every button */
-
-                navItems.forEach(nav => {
-                    nav.classList.remove("active");
-                });
-
-
-                /* Activate clicked button */
-
-                item.classList.add("active");
-
-
-                /* Hide every page */
-
-                pages.forEach(page => {
-                    page.classList.remove("active-page");
-                });
-
-
-                /* Show selected page */
-
-                const selectedPage =
-                    document.getElementById(pageId);
-
-                if (selectedPage) {
-                    selectedPage.classList.add("active-page");
-                }
-
-            });
-
-        });
-
-    </script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>
