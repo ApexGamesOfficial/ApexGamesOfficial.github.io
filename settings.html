@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings • Play Pulse</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .settings-page {
+            padding: 30px;
+            max-width: 900px;
+        }
+
+        .settings-header {
+            margin-bottom: 30px;
+        }
+
+        .settings-header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        .settings-header p {
+            margin-top: 8px;
+            color: #8d96a8;
+        }
+
+        .settings-section {
+            background: rgba(20, 27, 40, 0.8);
+            border: 1px solid rgba(80, 140, 255, 0.18);
+            border-radius: 14px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .settings-section-title {
+            padding: 18px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .setting-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            gap: 20px;
+        }
+
+        .setting-row:last-child {
+            border-bottom: none;
+        }
+
+        .setting-info h3 {
+            margin: 0 0 5px;
+            font-size: 15px;
+        }
+
+        .setting-info p {
+            margin: 0;
+            color: #858ea0;
+            font-size: 13px;
+        }
+
+        .setting-select {
+            background: #111827;
+            color: white;
+            border: 1px solid rgba(100, 150, 255, 0.3);
+            border-radius: 8px;
+            padding: 9px 12px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .setting-select:focus {
+            border-color: #6ea8ff;
+            box-shadow: 0 0 8px rgba(70, 130, 255, 0.25);
+        }
+
+        .toggle {
+            position: relative;
+            width: 46px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .toggle input {
+            display: none;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            inset: 0;
+            background: #293244;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .toggle-slider::before {
+            content: "";
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            left: 3px;
+            top: 3px;
+            background: white;
+            border-radius: 50%;
+            transition: 0.2s;
+        }
+
+        .toggle input:checked + .toggle-slider {
+            background: #397cff;
+            box-shadow: 0 0 10px rgba(57, 124, 255, 0.35);
+        }
+
+        .toggle input:checked + .toggle-slider::before {
+            transform: translateX(22px);
+        }
+
+        .account-box {
+            padding: 20px;
+        }
+
+        .account-name {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .account-status {
+            color: #6ea8ff;
+            font-size: 13px;
+        }
+
+        .settings-footer {
+            color: #626b7c;
+            font-size: 12px;
+            margin-top: 25px;
+        }
+
+        @media (max-width: 700px) {
+            .setting-row {
+                align-items: flex-start;
+            }
+
+            .settings-page {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <h2>PLAY PULSE</h2>
+        </div>
+
+        <nav>
+
+            <a href="index.html" class="nav-item">
+                🏠
+                <span>Home</span>
+            </a>
+
+            <a href="games.html" class="nav-item">
+                🎮
+                <span>Games</span>
+            </a>
+
+            <a href="#" class="nav-item">
+                ⭐
+                <span>Featured</span>
+            </a>
+
+            <a href="#" class="nav-item">
+                ❤️
+                <span>Favorites</span>
+            </a>
+
+            <a href="settings.html" class="nav-item active">
+                ⚙️
+                <span>Settings</span>
+            </a>
+
+            <a href="about.html" class="nav-item">
+                ℹ️
+                <span>About</span>
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <section class="settings-page">
+
+            <div class="settings-header">
+                <h1>Settings</h1>
+                <p>Customize your Play Pulse experience.</p>
+            </div>
+
+
+            <!-- Appearance -->
+
+            <div class="settings-section">
+
+                <div class="settings-section-title">
+                    🎨 Appearance
+                </div>
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+                        <h3>Theme</h3>
+                        <p>Choose how Play Pulse looks.</p>
+                    </div>
+
+                    <select class="setting-select">
+                        <option>Dark</option>
+                        <option>Light</option>
+                        <option>System Default</option>
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- Gameplay -->
+
+            <div class="settings-section">
+
+                <div class="settings-section-title">
+                    🎮 Gameplay
+                </div>
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+                        <h3>Auto-Fullscreen</h3>
+                        <p>Automatically enter fullscreen when supported.</p>
+                    </div>
+
+                    <label class="toggle">
+                        <input type="checkbox">
+                        <span class="toggle-slider"></span>
+                    </label>
+
+                </div>
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+                        <h3>Game Animations</h3>
+                        <p>Enable animations throughout Play Pulse.</p>
+                    </div>
+
+                    <label class="toggle">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- Sound -->
+
+            <div class="settings-section">
+
+                <div class="settings-section-title">
+                    🔊 Sound
+                </div>
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+                        <h3>Interface Sounds</h3>
+                        <p>Play sounds when interacting with the website.</p>
+                    </div>
+
+                    <label class="toggle">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- Account -->
+
+            <div class="settings-section">
+
+                <div class="settings-section-title">
+                    👤 Account
+                </div>
+
+                <div class="account-box">
+
+                    <div class="account-name">
+                        Apex Games
+                    </div>
+
+                    <div class="account-status">
+                        ● Account Connected
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="settings-footer">
+                Play Pulse • Settings
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
