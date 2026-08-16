@@ -2,119 +2,529 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Play Pulse</title>
+
     <style>
-        /* Sleek dark obsidian canvas background */
-        body { 
-            background-color: #06070a; 
-            color: #ffffff; 
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            text-align: center; 
-            margin: 0; 
-            padding: 20px; 
+        :root {
+            --pulse-blue: #168CFF;
+            --pulse-blue-light: #38A7FF;
+            --background: #06070a;
+            --sidebar: #0b0e15;
+            --card: #0d0f17;
+            --border: #1a2238;
+            --text: #ffffff;
+            --muted: #718096;
         }
 
-        /* NEW ELECTRIC BLUE THEME: Cyan-Blue to Deep Sapphire metallic gradient */
-        h1 { 
-            background: linear-gradient(135deg, #00d2ff, #0066ff);
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont,
+                         'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 245px;
+            height: 100vh;
+
+            background: rgba(11, 14, 21, 0.96);
+            border-right: 1px solid var(--border);
+
+            padding: 25px 16px;
+
+            display: flex;
+            flex-direction: column;
+
+            z-index: 1000;
+        }
+
+        /* PLAY PULSE LOGO */
+
+        .logo {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .logo h2 {
+            margin: 0;
+
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 3px;
+
+            color: var(--pulse-blue);
+
+            text-shadow:
+                0 0 15px rgba(22, 140, 255, 0.35);
+        }
+
+        .logo span {
+            display: block;
+
+            color: #56657a;
+            font-size: 10px;
+            letter-spacing: 2px;
+
+            margin-top: 4px;
+            text-transform: uppercase;
+        }
+
+        /* SIDEBAR SECTIONS */
+
+        .sidebar-title {
+            color: #4d5b70;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+
+            margin: 18px 12px 8px;
+            text-transform: uppercase;
+        }
+
+        /* NAVIGATION BUTTONS */
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 12px 14px;
+            margin: 4px 0;
+
+            border-radius: 10px;
+
+            color: #aeb9c9;
+            text-decoration: none;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .nav-item:hover {
+            background: rgba(22, 140, 255, 0.10);
+            color: #ffffff;
+
+            transform: translateX(3px);
+        }
+
+        .nav-item.active {
+            background: rgba(22, 140, 255, 0.16);
+            color: var(--pulse-blue-light);
+
+            box-shadow:
+                inset 3px 0 0 var(--pulse-blue);
+        }
+
+        .nav-icon {
+            width: 22px;
+            text-align: center;
+            font-size: 17px;
+        }
+
+        /* SIDEBAR FOOTER */
+
+        .sidebar-footer {
+            margin-top: auto;
+
+            padding: 14px;
+
+            border-top: 1px solid var(--border);
+
+            color: #4f5d71;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .sidebar-footer strong {
+            color: #73849b;
+        }
+
+        /* =========================
+           MAIN CONTENT
+        ========================= */
+
+        .main-content {
+            margin-left: 245px;
+
+            padding: 30px;
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+
+        .page-header {
+            max-width: 1200px;
+            margin: 20px auto 0;
+
+            text-align: center;
+        }
+
+        h1 {
+            background: linear-gradient(
+                135deg,
+                var(--pulse-blue-light),
+                var(--pulse-blue)
+            );
+
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-transform: uppercase; 
-            letter-spacing: 5px; 
-            margin-top: 40px;
+
+            text-transform: uppercase;
+            letter-spacing: 5px;
+
+            margin-top: 20px;
+            margin-bottom: 8px;
+
             font-weight: 900;
             font-size: 38px;
-            filter: drop-shadow(0 2px 12px rgba(0, 102, 255, 0.3));
-            animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
+            filter:
+                drop-shadow(
+                    0 2px 12px
+                    rgba(22, 140, 255, 0.3)
+                );
+
+            animation:
+                slideDown 0.8s
+                cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        p { 
-            color: #55657e; 
-            margin-bottom: 40px; 
+        .page-header p {
+            color: var(--muted);
+
+            margin-bottom: 40px;
+
             font-size: 15px;
             letter-spacing: 1px;
-            animation: fadeIn 1.2s ease-in-out;
+
+            animation:
+                fadeIn 1.2s ease-in-out;
         }
 
-        /* Minimal responsive card grid layout */
-        .grid-container { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-            gap: 35px; 
-            max-width: 1200px; 
-            margin: 0 auto; 
-            padding: 20px; 
+        /* =========================
+           GAME GRID
+        ========================= */
+
+        .grid-container {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(320px, 1fr)
+                );
+
+            gap: 35px;
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            padding: 20px;
         }
 
-        /* DARK MATTE CONTAINERS: Obsidian game panels with smooth transition rules */
-        .game-card { 
-            background-color: #0d0f17; 
-            border: 1px solid #1a2238; 
-            border-radius: 24px; 
-            padding: 18px; 
-            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-            /* Advanced easing for fluid, heavy-feeling animations */
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
-                        border-color 0.4s ease, 
-                        box-shadow 0.5s ease;
+        /* GAME CARD */
+
+        .game-card {
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 24px;
+
+            padding: 18px;
+
+            box-shadow:
+                0 10px 40px
+                rgba(0, 0, 0, 0.6);
+
+            transition:
+                transform 0.5s
+                cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.4s ease,
+                box-shadow 0.5s ease;
         }
 
-        /* HOVER INTERACTION: Card pops out smoothly with an ice-blue underglow aura */
         .game-card:hover {
-            transform: translateY(-12px) scale(1.03);
-            border-color: #00d2ff;
-            box-shadow: 0 20px 45px rgba(0, 210, 255, 0.25);
+            transform:
+                translateY(-12px)
+                scale(1.03);
+
+            border-color:
+                var(--pulse-blue);
+
+            box-shadow:
+                0 20px 45px
+                rgba(22, 140, 255, 0.25);
         }
 
-        .game-card h3 { 
-            color: #ffffff; 
-            margin-top: 5px; 
+        .game-card h3 {
+            color: #ffffff;
+
+            margin-top: 5px;
             margin-bottom: 15px;
-            font-size: 21px; 
+
+            font-size: 21px;
             letter-spacing: 0.5px;
+
             font-weight: 700;
         }
 
-        /* HD Embedded Sandbox Game Canvas */
-        .game-frame { 
-            border: none; 
-            border-radius: 16px; 
-            background: #020305; 
-            width: 100%; 
-            height: 400px; 
+        /* GAME FRAME */
+
+        .game-frame {
+            border: none;
+
+            border-radius: 16px;
+
+            background: #020305;
+
+            width: 100%;
+            height: 400px;
         }
 
-        /* Keyframe Layout Engines */
+        /* =========================
+           ANIMATIONS
+        ========================= */
+
         @keyframes slideDown {
-            0% { opacity: 0; transform: translateY(-30px); }
-            100% { opacity: 1; transform: translateY(0); }
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .sidebar {
+                width: 70px;
+                padding: 20px 8px;
+            }
+
+            .logo h2 {
+                font-size: 0;
+            }
+
+            .logo h2::after {
+                content: "P";
+                font-size: 24px;
+            }
+
+            .logo span,
+            .sidebar-title,
+            .nav-item span:not(.nav-icon),
+            .sidebar-footer {
+                display: none;
+            }
+
+            .nav-item {
+                justify-content: center;
+                padding: 13px 5px;
+            }
+
+            .main-content {
+                margin-left: 70px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .grid-container {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <h1>Play Pulse</h1>
-    <p>Apex Games Official Unblocked Portal. Fast, clean, and bypass-optimized.</p>
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
 
-    <div class="grid-container">
-        <!-- GAME 1 -->
-        <div class="game-card">
-            <h3>Space Invaders Classic</h3>
-            <iframe class="game-frame" src="https://mit.edu" allowtransparency="true" scrolling="no" allowfullscreen></iframe>
+    <aside class="sidebar">
+
+        <div class="logo">
+            <h2>PLAY PULSE</h2>
+            <span>Apex Games</span>
         </div>
 
-        <!-- GAME 2 -->
-        <div class="game-card">
-            <h3>Retro Snake</h3>
-            <iframe class="game-frame" src="https://mit.edu" allowtransparency="true" scrolling="no" allowfullscreen></iframe>
+        <div class="sidebar-title">
+            Main
         </div>
-    </div>
+
+        <a href="#" class="nav-item active">
+            <span class="nav-icon">🏠</span>
+            <span>Home</span>
+        </a>
+
+        <a href="#" class="nav-item">
+            <span class="nav-icon">🎮</span>
+            <span>Games</span>
+        </a>
+
+        <a href="#" class="nav-item">
+            <span class="nav-icon">⭐</span>
+            <span>Featured</span>
+        </a>
+
+        <a href="#" class="nav-item">
+            <span class="nav-icon">🆕</span>
+            <span>New Games</span>
+        </a>
+
+        <div class="sidebar-title">
+            Categories
+        </div>
+
+        <a href="#" class="nav-item">
+            <span class="nav-icon">👾</span>
+            <span>Arcade</span>
+        </a>
+
+        <a href="#" class="nav-item">
+            <span class="nav-icon">⚔️</span>
+            <span>Action</span>
+        </a>
+
+        <a href="#" class="nav-item">
+            <span class="nav-icon">🧩</span>
+            <span>Puzzle</span>
+        </a>
+
+        <a href="#" class="nav-item">
+            <span class="nav-icon">🏆</span>
+            <span>Strategy</span>
+        </a>
+
+        <div class="sidebar-title">
+            More
+        </div>
+
+        <a href="#" class="nav-item">
+            <span class="nav-icon">⚙️</span>
+            <span>Settings</span>
+        </a>
+
+        <a href="#" class="nav-item">
+            <span class="nav-icon">ℹ️</span>
+            <span>About</span>
+        </a>
+
+        <div class="sidebar-footer">
+            <strong>APEX GAMES</strong><br>
+            Play Pulse<br>
+            Gaming Portal
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main-content">
+
+        <header class="page-header">
+
+            <h1>Play Pulse</h1>
+
+            <p>
+                Apex Games Official Gaming Portal.
+                Fast, clean, and built for gaming.
+            </p>
+
+        </header>
+
+
+        <!-- GAME GRID -->
+
+        <div class="grid-container">
+
+            <!-- GAME 1 -->
+
+            <div class="game-card">
+
+                <h3>
+                    Space Invaders Classic
+                </h3>
+
+                <iframe
+                    class="game-frame"
+                    src="https://mit.edu"
+                    scrolling="no"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+
+
+            <!-- GAME 2 -->
+
+            <div class="game-card">
+
+                <h3>
+                    Retro Snake
+                </h3>
+
+                <iframe
+                    class="game-frame"
+                    src="https://mit.edu"
+                    scrolling="no"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+
+        </div>
+
+    </main>
 
 </body>
 </html>
+
 
 
