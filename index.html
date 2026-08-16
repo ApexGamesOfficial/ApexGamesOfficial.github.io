@@ -281,3 +281,32 @@
 
 </body>
 </html>
+  <!-- Hidden Audio File -->
+  <audio id="bgMusic" loop>
+    <source src="PlayPulseSoundtrack.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Button Controller Logic -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const music = document.getElementById("bgMusic");
+      
+      // Selects your existing "Sound On" element dynamically
+      const toggleBtn = document.querySelector(".sound-toggle") || document.getElementById("soundBtn"); 
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener("click", () => {
+          if (music.paused) {
+            music.play();
+            // Optional UI visual change confirmation
+            toggleBtn.style.opacity = "1.0"; 
+          } else {
+            music.pause();
+            toggleBtn.style.opacity = "0.6";
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
