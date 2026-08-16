@@ -99,7 +99,7 @@
         <source src="audio/PlayPulseSoundtrack.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- MUSIC CONTROLLER LOGIC -->
+       <!-- MUSIC CONTROLLER LOGIC -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const music = document.getElementById("bgMusic");
@@ -109,14 +109,16 @@
 
             if (toggleBtn && music) {
                 toggleBtn.addEventListener("click", () => {
-                    if (music.paused) {
-                        music.play();
-                        soundIcon.textContent = "⏸️";
-                        soundText.textContent = "Sound Off";
-                    } else {
+                    // Swapped! If music is already playing, turn it OFF.
+                    if (!music.paused) {
                         music.pause();
                         soundIcon.textContent = "🔊";
                         soundText.textContent = "Sound On";
+                    } else {
+                        // If music is paused, turn it ON.
+                        music.play();
+                        soundIcon.textContent = "⏸️";
+                        soundText.textContent = "Sound Off";
                     }
                 });
             }
