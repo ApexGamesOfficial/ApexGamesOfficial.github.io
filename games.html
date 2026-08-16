@@ -12,7 +12,7 @@
 
 <body>
 
-    <!-- ANIMATED BACKGROUND -->
+    <!-- BACKGROUND -->
     <div class="animated-background">
 
         <div class="glow glow-1"></div>
@@ -43,29 +43,22 @@
             <span>Apex Games</span>
         </div>
 
-
-        <div class="sidebar-title">
-            Main
-        </div>
-
+        <div class="sidebar-title">Main</div>
 
         <a href="index.html" class="nav-item">
             <span class="nav-icon">🏠</span>
             <span>Home</span>
         </a>
 
-
         <a href="games.html" class="nav-item active">
             <span class="nav-icon">🎮</span>
             <span>Games</span>
         </a>
 
-
         <a href="featured.html" class="nav-item">
             <span class="nav-icon">⭐</span>
             <span>Featured</span>
         </a>
-
 
         <a href="popular.html" class="nav-item">
             <span class="nav-icon">🔥</span>
@@ -73,16 +66,12 @@
         </a>
 
 
-        <div class="sidebar-title">
-            Library
-        </div>
-
+        <div class="sidebar-title">Library</div>
 
         <a href="recent.html" class="nav-item">
             <span class="nav-icon">🕘</span>
             <span>Recently Played</span>
         </a>
-
 
         <a href="favorites.html" class="nav-item">
             <span class="nav-icon">❤️</span>
@@ -90,16 +79,12 @@
         </a>
 
 
-        <div class="sidebar-title">
-            More
-        </div>
-
+        <div class="sidebar-title">More</div>
 
         <a href="settings.html" class="nav-item">
             <span class="nav-icon">⚙️</span>
             <span>Settings</span>
         </a>
-
 
         <a href="about.html" class="nav-item">
             <span class="nav-icon">ℹ️</span>
@@ -107,43 +92,31 @@
         </a>
 
 
-        <!-- SOUND -->
-        <button
-            class="sound-control"
-            id="soundControl"
-        >
+        <button class="sound-control" id="soundControl">
             <span id="soundIcon">🔊</span>
             <span id="soundText">Sound On</span>
         </button>
 
 
         <div class="sidebar-footer">
-
             <strong>APEX GAMES</strong>
-
             <br>
-
             Play Pulse
-
             <br>
-
             Gaming Portal
-
         </div>
 
     </aside>
 
 
-    <!-- MAIN CONTENT -->
+    <!-- MAIN -->
     <main class="main-content">
 
         <section class="page">
 
             <div class="page-header">
 
-                <h1>
-                    Games
-                </h1>
+                <h1>Games</h1>
 
                 <p>
                     Browse the Play Pulse game library.
@@ -152,16 +125,13 @@
             </div>
 
 
-            <!-- GAME GRID -->
             <div class="game-grid">
 
 
                 <!-- SPACE INVADERS -->
                 <div class="game-card">
 
-                    <div class="game-icon">
-                        👾
-                    </div>
+                    <div class="game-icon">👾</div>
 
                     <h3>
                         Space Invaders Classic
@@ -170,7 +140,6 @@
                     <p>
                         Classic arcade action.
                     </p>
-
 
                     <div class="game-actions">
 
@@ -181,13 +150,12 @@
                             Play
                         </button>
 
-
                         <button
                             class="favorite-button"
                             data-favorite="Space Invaders Classic"
                             aria-label="Favorite Space Invaders Classic"
                         >
-                            ♥
+                            ♡
                         </button>
 
                     </div>
@@ -198,9 +166,7 @@
                 <!-- RETRO SNAKE -->
                 <div class="game-card">
 
-                    <div class="game-icon">
-                        🐍
-                    </div>
+                    <div class="game-icon">🐍</div>
 
                     <h3>
                         Retro Snake
@@ -209,7 +175,6 @@
                     <p>
                         The classic Snake experience.
                     </p>
-
 
                     <div class="game-actions">
 
@@ -220,13 +185,12 @@
                             Play
                         </button>
 
-
                         <button
                             class="favorite-button"
                             data-favorite="Retro Snake"
                             aria-label="Favorite Retro Snake"
                         >
-                            ♥
+                            ♡
                         </button>
 
                     </div>
@@ -237,16 +201,14 @@
                 <!-- COMING SOON -->
                 <div class="game-card">
 
-                    <div class="game-icon">
-                        🚀
-                    </div>
+                    <div class="game-icon">🚀</div>
 
                     <h3>
                         More Games Coming Soon
                     </h3>
 
                     <p>
-                        New games are coming to Play Pulse.
+                        New games will be added to Play Pulse.
                     </p>
 
                     <button
@@ -258,7 +220,6 @@
 
                 </div>
 
-
             </div>
 
         </section>
@@ -266,30 +227,7 @@
     </main>
 
 
-    <!-- JAVASCRIPT -->
     <script src="script.js"></script>
-
-
-    <!-- FAVORITE BUTTON ANIMATION -->
-    <script>
-
-        document
-            .querySelectorAll(".favorite-button")
-            .forEach(button => {
-
-                button.addEventListener("click", function () {
-
-                    this.classList.remove("favorite-pop");
-
-                    void this.offsetWidth;
-
-                    this.classList.add("favorite-pop");
-
-                });
-
-            });
-
-    </script>
 
 </body>
 
