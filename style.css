@@ -1458,3 +1458,75 @@ button.favorite-button.favorite-pop {
 .game-actions .favorite-button:active {
     transform: scale(0.82) !important;
 }
+/* =========================================
+   ABOUT PAGE - DECORATIVE BUBBLES
+   ========================================= */
+
+.about-page {
+    position: relative;
+    z-index: 1;
+}
+
+.about-page::before,
+.about-page::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+    filter: blur(2px);
+}
+
+/* Large bubble */
+.about-page::before {
+    width: 260px;
+    height: 260px;
+    top: 80px;
+    right: -90px;
+    background: rgba(45, 120, 255, 0.08);
+    box-shadow:
+        0 0 70px rgba(45, 120, 255, 0.16),
+        inset 0 0 35px rgba(80, 150, 255, 0.08);
+    animation: aboutBubbleFloat 7s ease-in-out infinite;
+}
+
+/* Smaller bubble */
+.about-page::after {
+    width: 150px;
+    height: 150px;
+    bottom: 60px;
+    left: -55px;
+    background: rgba(60, 140, 255, 0.07);
+    box-shadow:
+        0 0 55px rgba(60, 140, 255, 0.14),
+        inset 0 0 25px rgba(100, 170, 255, 0.07);
+    animation: aboutBubbleFloatReverse 9s ease-in-out infinite;
+}
+
+
+@keyframes aboutBubbleFloat {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-18px);
+    }
+
+}
+
+
+@keyframes aboutBubbleFloatReverse {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(15px);
+    }
+
+}
