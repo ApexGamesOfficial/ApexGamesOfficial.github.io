@@ -1,217 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Settings • Play Pulse</title>
 
     <link rel="stylesheet" href="style.css">
-
-    <style>
-        .settings-page {
-            padding: 30px;
-            max-width: 900px;
-        }
-
-        .settings-header {
-            margin-bottom: 30px;
-        }
-
-        .settings-header h1 {
-            margin: 0;
-            font-size: 32px;
-        }
-
-        .settings-header p {
-            margin-top: 8px;
-            color: #8d96a8;
-        }
-
-        .settings-section {
-            background: rgba(20, 27, 40, 0.8);
-            border: 1px solid rgba(80, 140, 255, 0.18);
-            border-radius: 14px;
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-
-        .settings-section-title {
-            padding: 18px 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        .setting-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            gap: 20px;
-        }
-
-        .setting-row:last-child {
-            border-bottom: none;
-        }
-
-        .setting-info h3 {
-            margin: 0 0 5px;
-            font-size: 15px;
-        }
-
-        .setting-info p {
-            margin: 0;
-            color: #858ea0;
-            font-size: 13px;
-        }
-
-        .setting-select {
-            background: #111827;
-            color: white;
-            border: 1px solid rgba(100, 150, 255, 0.3);
-            border-radius: 8px;
-            padding: 9px 12px;
-            outline: none;
-            cursor: pointer;
-        }
-
-        .setting-select:focus {
-            border-color: #6ea8ff;
-            box-shadow: 0 0 8px rgba(70, 130, 255, 0.25);
-        }
-
-        .toggle {
-            position: relative;
-            width: 46px;
-            height: 24px;
-            flex-shrink: 0;
-        }
-
-        .toggle input {
-            display: none;
-        }
-
-        .toggle-slider {
-            position: absolute;
-            inset: 0;
-            background: #293244;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .toggle-slider::before {
-            content: "";
-            position: absolute;
-            width: 18px;
-            height: 18px;
-            left: 3px;
-            top: 3px;
-            background: white;
-            border-radius: 50%;
-            transition: 0.2s;
-        }
-
-        .toggle input:checked + .toggle-slider {
-            background: #397cff;
-            box-shadow: 0 0 10px rgba(57, 124, 255, 0.35);
-        }
-
-        .toggle input:checked + .toggle-slider::before {
-            transform: translateX(22px);
-        }
-
-        .account-box {
-            padding: 20px;
-        }
-
-        .account-name {
-            font-size: 17px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .account-status {
-            color: #6ea8ff;
-            font-size: 13px;
-        }
-
-        .settings-footer {
-            color: #626b7c;
-            font-size: 12px;
-            margin-top: 25px;
-        }
-
-        @media (max-width: 700px) {
-            .setting-row {
-                align-items: flex-start;
-            }
-
-            .settings-page {
-                padding: 20px;
-            }
-        }
-    </style>
 </head>
 
 <body>
 
-    <aside class="sidebar">
+    <!-- BACKGROUND -->
+    <div class="animated-background">
 
-        <div class="sidebar-logo">
-            <h2>PLAY PULSE</h2>
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+        <div class="glow glow-3"></div>
+
+        <div class="particles">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
 
-        <nav>
+    </div>
 
-            <a href="index.html" class="nav-item">
-                🏠
-                <span>Home</span>
-            </a>
 
-            <a href="games.html" class="nav-item">
-                🎮
-                <span>Games</span>
-            </a>
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
 
-            <a href="#" class="nav-item">
-                ⭐
-                <span>Featured</span>
-            </a>
+        <div class="logo">
+            <h2>PLAY PULSE</h2>
+            <span>Apex Games</span>
+        </div>
 
-            <a href="#" class="nav-item">
-                ❤️
-                <span>Favorites</span>
-            </a>
+        <div class="sidebar-title">Main</div>
 
-            <a href="settings.html" class="nav-item active">
-                ⚙️
-                <span>Settings</span>
-            </a>
+        <a href="index.html" class="nav-item">
+            <span class="nav-icon">🏠</span>
+            <span>Home</span>
+        </a>
 
-            <a href="about.html" class="nav-item">
-                ℹ️
-                <span>About</span>
-            </a>
+        <a href="games.html" class="nav-item">
+            <span class="nav-icon">🎮</span>
+            <span>Games</span>
+        </a>
 
-        </nav>
+        <a href="featured.html" class="nav-item">
+            <span class="nav-icon">⭐</span>
+            <span>Featured</span>
+        </a>
+
+        <a href="popular.html" class="nav-item">
+            <span class="nav-icon">🔥</span>
+            <span>Popular</span>
+        </a>
+
+
+        <div class="sidebar-title">Library</div>
+
+        <a href="recent.html" class="nav-item">
+            <span class="nav-icon">🕘</span>
+            <span>Recently Played</span>
+        </a>
+
+        <a href="favorites.html" class="nav-item">
+            <span class="nav-icon">❤️</span>
+            <span>Favorites</span>
+        </a>
+
+
+        <div class="sidebar-title">More</div>
+
+        <a href="settings.html" class="nav-item active">
+            <span class="nav-icon">⚙️</span>
+            <span>Settings</span>
+        </a>
+
+        <a href="about.html" class="nav-item">
+            <span class="nav-icon">ℹ️</span>
+            <span>About</span>
+        </a>
+
+
+        <button class="sound-control" id="soundControl">
+            <span id="soundIcon">🔊</span>
+            <span id="soundText">Sound On</span>
+        </button>
+
+
+        <div class="sidebar-footer">
+            <strong>APEX GAMES</strong>
+            <br>
+            Play Pulse
+            <br>
+            Gaming Portal
+        </div>
 
     </aside>
 
 
+    <!-- MAIN -->
     <main class="main-content">
 
-        <section class="settings-page">
+        <section class="page settings-page">
 
-            <div class="settings-header">
+            <div class="page-header">
+
                 <h1>Settings</h1>
-                <p>Customize your Play Pulse experience.</p>
+
+                <p>
+                    Customize your Play Pulse experience.
+                </p>
+
             </div>
 
 
-            <!-- Appearance -->
-
+            <!-- APPEARANCE -->
             <div class="settings-section">
 
                 <div class="settings-section-title">
@@ -222,13 +136,27 @@
 
                     <div class="setting-info">
                         <h3>Theme</h3>
-                        <p>Choose how Play Pulse looks.</p>
+
+                        <p>
+                            Choose how Play Pulse looks.
+                        </p>
                     </div>
 
-                    <select class="setting-select">
-                        <option>Dark</option>
-                        <option>Light</option>
-                        <option>System Default</option>
+                    <select
+                        class="setting-select"
+                        id="themeSetting"
+                    >
+                        <option value="dark">
+                            Dark
+                        </option>
+
+                        <option value="light">
+                            Light
+                        </option>
+
+                        <option value="system">
+                            System Default
+                        </option>
                     </select>
 
                 </div>
@@ -236,38 +164,67 @@
             </div>
 
 
-            <!-- Gameplay -->
-
+            <!-- GAMEPLAY -->
             <div class="settings-section">
 
                 <div class="settings-section-title">
                     🎮 Gameplay
                 </div>
 
+
                 <div class="setting-row">
 
                     <div class="setting-info">
-                        <h3>Auto-Fullscreen</h3>
-                        <p>Automatically enter fullscreen when supported.</p>
+
+                        <h3>
+                            Auto-Fullscreen
+                        </h3>
+
+                        <p>
+                            Automatically enter fullscreen
+                            when supported.
+                        </p>
+
                     </div>
 
                     <label class="toggle">
-                        <input type="checkbox">
+
+                        <input
+                            type="checkbox"
+                            id="fullscreenSetting"
+                        >
+
                         <span class="toggle-slider"></span>
+
                     </label>
 
                 </div>
 
+
                 <div class="setting-row">
 
                     <div class="setting-info">
-                        <h3>Game Animations</h3>
-                        <p>Enable animations throughout Play Pulse.</p>
+
+                        <h3>
+                            Game Animations
+                        </h3>
+
+                        <p>
+                            Enable animations throughout
+                            Play Pulse.
+                        </p>
+
                     </div>
 
                     <label class="toggle">
-                        <input type="checkbox" checked>
+
+                        <input
+                            type="checkbox"
+                            id="animationsSetting"
+                        >
+
                         <span class="toggle-slider"></span>
+
                     </label>
 
                 </div>
@@ -275,24 +232,38 @@
             </div>
 
 
-            <!-- Sound -->
-
+            <!-- SOUND -->
             <div class="settings-section">
 
                 <div class="settings-section-title">
                     🔊 Sound
                 </div>
 
+
                 <div class="setting-row">
 
                     <div class="setting-info">
-                        <h3>Interface Sounds</h3>
-                        <p>Play sounds when interacting with the website.</p>
+
+                        <h3>
+                            Interface Sounds
+                        </h3>
+
+                        <p>
+                            Play sounds when interacting
+                            with the website.
+                        </p>
+
                     </div>
 
                     <label class="toggle">
-                        <input type="checkbox" checked>
+
+                        <input
+                            type="checkbox"
+                            id="interfaceSoundsSetting"
+                        >
+
                         <span class="toggle-slider"></span>
+
                     </label>
 
                 </div>
@@ -300,8 +271,7 @@
             </div>
 
 
-            <!-- Account -->
-
+            <!-- ACCOUNT -->
             <div class="settings-section">
 
                 <div class="settings-section-title">
@@ -324,79 +294,16 @@
 
 
             <div class="settings-footer">
-                Play Pulse • Settings
+                Play Pulse • v.01
             </div>
 
         </section>
 
     </main>
 
+
+    <script src="script.js"></script>
+
 </body>
+
 </html>
-<!-- AUDIO TRACKER -->
-<audio id="bgMusic" loop>
-  <source src="audio/PlayPulseSoundtrack.mp3" type="audio/mpeg">
-</audio>
-
-<!-- MUSIC CONTROLLER WITH MEMORY -->
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const music = document.getElementById("bgMusic");
-    const toggleBtn = document.getElementById("soundControl");
-    const soundIcon = document.getElementById("soundIcon");
-    const soundText = document.getElementById("soundText");
-
-    // 1. Sync saved track position and state
-    const savedTime = localStorage.getItem("musicTime");
-    const isMusicPlaying = localStorage.getItem("musicPlaying") === "true";
-
-    if (music) {
-      if (savedTime) {
-        music.currentTime = parseFloat(savedTime);
-      }
-      
-      // Auto-resume if it was active on the previous page
-      if (isMusicPlaying) {
-        music.play().then(() => {
-          updateUI(true);
-        }).catch(() => {
-          localStorage.setItem("musicPlaying", "false");
-          updateUI(false);
-        });
-      } else {
-        updateUI(false);
-      }
-    }
-
-    // Swapped Visual UI definitions to match your layout state
-    function updateUI(playing) {
-      if (!soundIcon || !soundText) return;
-      soundIcon.textContent = playing ? "⏸️" : "🔊";
-      soundText.textContent = playing ? "Sound Off" : "Sound On";
-    }
-
-    // 2. Click Handler - Fixed Inverse Direction Clashes
-    if (toggleBtn && music) {
-      toggleBtn.addEventListener("click", () => {
-        // If it is paused, click means turn it ON
-        if (music.paused) {
-          music.play();
-          localStorage.setItem("musicPlaying", "true");
-          updateUI(true);
-        } else {
-          // If it is playing, click means turn it OFF
-          music.pause();
-          localStorage.setItem("musicPlaying", "false");
-          updateUI(false);
-        }
-      });
-    }
-
-    // 3. Track time location smoothly
-    setInterval(() => {
-      if (music && !music.paused) {
-        localStorage.setItem("musicTime", music.currentTime);
-      }
-    }, 500);
-  });
-</script>
