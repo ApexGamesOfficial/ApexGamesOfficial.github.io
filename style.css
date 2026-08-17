@@ -4031,3 +4031,21 @@ body.modal-open {
 
     font-size: 13px;
 }
+/* =========================================
+   SEARCH — HIDDEN CARD FIX
+   ========================================= */
+
+/* JavaScript uses the hidden attribute.
+   This makes sure existing game-card CSS
+   cannot override it. */
+
+.game-card[hidden] {
+    display: none !important;
+}
+
+
+/* Same protection for the no-results message */
+
+.no-games-found[hidden] {
+    display: none !important;
+}
