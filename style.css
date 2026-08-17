@@ -2003,3 +2003,565 @@ button.favorite-button.favorite-pop {
     position: relative;
     z-index: 2;
 }
+/* =========================================
+   HOME - GET STARTED
+   ========================================= */
+
+.home-wrapper {
+    width: min(900px, 92%);
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 70px;
+}
+
+
+/* Get Started heading */
+
+.home-start-section {
+    width: 100%;
+    margin-top: 42px;
+}
+
+.home-start-section h2 {
+    margin: 0 0 18px;
+
+    text-align: left;
+
+    color: #ffffff;
+
+    font-size: 22px;
+    font-weight: 700;
+}
+
+
+/* Games / Popular buttons */
+
+.home-start-buttons {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 18px;
+}
+
+
+.home-start-button {
+    min-height: 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    padding: 20px 24px;
+
+    text-decoration: none;
+
+    color: #ffffff;
+
+    background: rgba(15, 25, 45, 0.72);
+
+    border: 1px solid rgba(90, 140, 220, 0.16);
+
+    border-radius: 18px;
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.18);
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.home-start-button:hover {
+    transform: translateY(-3px);
+
+    border-color:
+        rgba(80, 150, 255, 0.35);
+
+    background:
+        rgba(20, 35, 60, 0.82);
+
+    box-shadow:
+        0 14px 40px rgba(0, 0, 0, 0.24),
+        0 0 25px rgba(50, 120, 255, 0.07);
+}
+
+
+.home-start-icon {
+    font-size: 28px;
+}
+
+
+.home-start-content {
+    display: flex;
+    align-items: center;
+}
+
+
+.home-start-content strong {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+/* =========================================
+   HOME - UPDATE LOG BUTTON
+   ========================================= */
+
+.home-update-button {
+    width: 100%;
+
+    margin-top: 22px;
+
+    padding: 19px 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    cursor: pointer;
+
+    color: #ffffff;
+
+    background: rgba(15, 25, 45, 0.72);
+
+    border: 1px solid rgba(90, 140, 220, 0.16);
+
+    border-radius: 16px;
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.18);
+
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.home-update-button:hover {
+    transform: translateY(-2px);
+
+    border-color:
+        rgba(80, 150, 255, 0.35);
+
+    background:
+        rgba(20, 35, 60, 0.82);
+
+    box-shadow:
+        0 14px 40px rgba(0, 0, 0, 0.22),
+        0 0 20px rgba(50, 120, 255, 0.06);
+}
+
+
+.home-update-left {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.home-update-icon {
+    font-size: 20px;
+}
+
+
+.home-update-arrow {
+    font-size: 24px;
+
+    opacity: 0.65;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+
+.home-update-button:hover .home-update-arrow {
+    transform: translateX(5px);
+
+    opacity: 1;
+}
+
+
+/* =========================================
+   UPDATE LOG MODAL
+   ========================================= */
+
+.update-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    visibility: hidden;
+    opacity: 0;
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+}
+
+
+.update-modal.open {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.update-modal-backdrop {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(3, 8, 18, 0.72);
+
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+}
+
+
+/* Modal panel */
+
+.update-modal-panel {
+    position: relative;
+
+    width: min(760px, 100%);
+    max-height: 82vh;
+
+    overflow-y: auto;
+
+    padding: 30px;
+
+    background:
+        rgba(15, 25, 45, 0.92);
+
+    border:
+        1px solid rgba(100, 150, 230, 0.22);
+
+    border-radius: 22px;
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.45);
+
+    transform:
+        translateY(20px) scale(0.97);
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+.update-modal.open .update-modal-panel {
+    transform:
+        translateY(0) scale(1);
+}
+
+
+/* =========================================
+   MODAL CLOSE BUTTON
+   ========================================= */
+
+.update-modal-close {
+    position: absolute;
+
+    top: 18px;
+    right: 18px;
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    font-size: 27px;
+
+    transition:
+        transform 0.25s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.update-modal-close span {
+    display: block;
+
+    line-height: 1;
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+.update-modal-close:hover {
+    transform: scale(1.08);
+
+    background:
+        rgba(255, 255, 255, 0.11);
+
+    border-color:
+        rgba(100, 160, 255, 0.3);
+}
+
+
+.update-modal-close:hover span {
+    transform: rotate(90deg);
+}
+
+
+/* =========================================
+   MODAL HEADER
+   ========================================= */
+
+.update-modal-header {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding-right: 50px;
+
+    margin-bottom: 28px;
+}
+
+
+.update-modal-label {
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color:
+        rgba(120, 175, 255, 0.75);
+}
+
+
+.update-modal-header h2 {
+    margin: 6px 0 6px;
+
+    color: #ffffff;
+
+    font-size: 30px;
+}
+
+
+.update-modal-header p {
+    margin: 0;
+
+    color:
+        rgba(255, 255, 255, 0.55);
+}
+
+
+.update-modal-version {
+    padding: 7px 11px;
+
+    border-radius: 9px;
+
+    background:
+        rgba(60, 130, 255, 0.12);
+
+    border:
+        1px solid rgba(80, 150, 255, 0.2);
+
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   UPDATE ENTRY
+   ========================================= */
+
+.update-entry {
+    padding: 22px;
+
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.07);
+
+    border-radius: 16px;
+}
+
+
+.update-entry-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 15px;
+}
+
+
+.update-entry-header h3 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 18px;
+}
+
+
+.update-entry-header span {
+    padding: 5px 9px;
+
+    border-radius: 7px;
+
+    background:
+        rgba(70, 150, 255, 0.1);
+
+    color:
+        rgba(150, 200, 255, 0.8);
+
+    font-size: 11px;
+}
+
+
+.update-entry ul {
+    margin: 0;
+
+    padding-left: 20px;
+}
+
+
+.update-entry li {
+    margin: 9px 0;
+
+    color:
+        rgba(255, 255, 255, 0.67);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   MODAL FOOTER
+   ========================================= */
+
+.update-modal-footer {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-top: 22px;
+
+    color:
+        rgba(255, 255, 255, 0.35);
+
+    font-size: 12px;
+}
+
+
+.update-modal-footer strong {
+    color:
+        rgba(255, 255, 255, 0.5);
+
+    letter-spacing: 1px;
+}
+
+
+/* Prevent page scrolling while modal is open */
+
+body.modal-open {
+    overflow: hidden;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+    .home-wrapper {
+        padding-top: 40px;
+    }
+
+
+    .home-start-buttons {
+        grid-template-columns: 1fr;
+    }
+
+
+    .home-start-button {
+        min-height: 80px;
+    }
+
+
+    .update-modal {
+        padding: 15px;
+    }
+
+
+    .update-modal-panel {
+        padding: 24px 20px;
+    }
+
+
+    .update-modal-header {
+        flex-direction: column;
+    }
+
+
+    .update-modal-version {
+        align-self: flex-start;
+    }
+
+}
