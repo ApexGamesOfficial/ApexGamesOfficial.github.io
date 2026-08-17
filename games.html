@@ -125,11 +125,46 @@
             </div>
 
 
-            <div class="game-grid">
+            <!-- SEARCH -->
+            <div class="game-search">
+
+                <span class="game-search-icon">
+                    🔍
+                </span>
+
+                <input
+                    type="search"
+                    id="gameSearch"
+                    placeholder="Search games..."
+                    autocomplete="off"
+                    aria-label="Search games"
+                >
+
+                <button
+                    type="button"
+                    id="clearGameSearch"
+                    class="game-search-clear"
+                    aria-label="Clear search"
+                    hidden
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- GAME GRID -->
+            <div
+                class="game-grid"
+                id="gameGrid"
+            >
 
 
                 <!-- SPACE INVADERS -->
-                <div class="game-card">
+                <div
+                    class="game-card"
+                    data-game-search="Space Invaders Classic Classic arcade action"
+                >
 
                     <div class="game-icon">👾</div>
 
@@ -164,7 +199,10 @@
 
 
                 <!-- RETRO SNAKE -->
-                <div class="game-card">
+                <div
+                    class="game-card"
+                    data-game-search="Retro Snake classic Snake experience"
+                >
 
                     <div class="game-icon">🐍</div>
 
@@ -199,7 +237,10 @@
 
 
                 <!-- COMING SOON -->
-                <div class="game-card">
+                <div
+                    class="game-card"
+                    data-game-search="More Games Coming Soon"
+                >
 
                     <div class="game-icon">🚀</div>
 
@@ -220,11 +261,167 @@
 
                 </div>
 
+
+            </div>
+
+
+            <!-- NO RESULTS -->
+            <div
+                class="no-games-found"
+                id="noGamesFound"
+                hidden
+            >
+
+                <div class="no-games-icon">
+                    🔎
+                </div>
+
+                <h2>
+                    No games found
+                </h2>
+
+                <p>
+                    Try searching for a different game.
+                </p>
+
             </div>
 
         </section>
 
     </main>
+
+
+    <!-- SEARCH SCRIPT -->
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                const searchInput =
+                    document.getElementById(
+                        "gameSearch"
+                    );
+
+                const clearButton =
+                    document.getElementById(
+                        "clearGameSearch"
+                    );
+
+                const gameGrid =
+                    document.getElementById(
+                        "gameGrid"
+                    );
+
+                const noGamesFound =
+                    document.getElementById(
+                        "noGamesFound"
+                    );
+
+
+                if (
+                    !searchInput ||
+                    !gameGrid
+                ) {
+                    return;
+                }
+
+
+                const gameCards =
+                    Array.from(
+                        gameGrid.querySelectorAll(
+                            ".game-card"
+                        )
+                    );
+
+
+                function filterGames() {
+
+                    const searchTerm =
+                        searchInput.value
+                            .trim()
+                            .toLowerCase();
+
+
+                    let visibleGames = 0;
+
+
+                    gameCards.forEach(
+                        card => {
+
+                            const searchableText =
+                                (
+                                    card.dataset.gameSearch ||
+                                    card.textContent
+                                )
+                                .toLowerCase();
+
+
+                            const matches =
+                                searchableText.includes(
+                                    searchTerm
+                                );
+
+
+                            card.style.display =
+                                matches
+                                    ? ""
+                                    : "none";
+
+
+                            if (matches) {
+                                visibleGames++;
+                            }
+
+                        }
+                    );
+
+
+                    if (clearButton) {
+
+                        clearButton.hidden =
+                            searchTerm === "";
+
+                    }
+
+
+                    if (noGamesFound) {
+
+                        noGamesFound.hidden =
+                            visibleGames !== 0;
+
+                    }
+
+                }
+
+
+                searchInput.addEventListener(
+                    "input",
+                    filterGames
+                );
+
+
+                if (clearButton) {
+
+                    clearButton.addEventListener(
+                        "click",
+                        () => {
+
+                            searchInput.value = "";
+
+                            filterGames();
+
+                            searchInput.focus();
+
+                        }
+                    );
+
+                }
+
+            }
+        );
+
+    </script>
 
 
     <script src="script.js"></script>
