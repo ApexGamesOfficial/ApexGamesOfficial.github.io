@@ -1,176 +1,594 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Play Pulse</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <!-- BACKGROUND -->
+
+    <!-- =========================================
+         BACKGROUND
+         ========================================= -->
+
     <div class="animated-background">
+
         <div class="glow glow-1"></div>
         <div class="glow glow-2"></div>
         <div class="glow glow-3"></div>
+
         <div class="particles">
-            <span></span> <span></span> <span></span> <span></span> <span></span> 
-            <span></span> <span></span> <span></span> <span></span> <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
+
     </div>
 
-    <!-- SIDEBAR -->
+
+    <!-- =========================================
+         SIDEBAR
+         ========================================= -->
+
     <aside class="sidebar">
+
         <div class="logo">
             <h2>PLAY PULSE</h2>
             <span>Apex Games</span>
         </div>
-        <div class="sidebar-title">Main</div>
+
+
+        <div class="sidebar-title">
+            Main
+        </div>
+
+
         <a href="index.html" class="nav-item active">
-            <span class="nav-icon">🏠</span> <span>Home</span>
+            <span class="nav-icon">🏠</span>
+            <span>Home</span>
         </a>
+
+
         <a href="games.html" class="nav-item">
-            <span class="nav-icon">🎮</span> <span>Games</span>
+            <span class="nav-icon">🎮</span>
+            <span>Games</span>
         </a>
+
+
         <a href="featured.html" class="nav-item">
-            <span class="nav-icon">⭐</span> <span>Featured</span>
+            <span class="nav-icon">⭐</span>
+            <span>Featured</span>
         </a>
+
+
         <a href="popular.html" class="nav-item">
-            <span class="nav-icon">🔥</span> <span>Popular</span>
+            <span class="nav-icon">🔥</span>
+            <span>Popular</span>
         </a>
-        <div class="sidebar-title">Library</div>
+
+
+        <div class="sidebar-title">
+            Library
+        </div>
+
+
         <a href="recent.html" class="nav-item">
-            <span class="nav-icon">🕘</span> <span>Recently Played</span>
+            <span class="nav-icon">🕘</span>
+            <span>Recently Played</span>
         </a>
+
+
         <a href="favorites.html" class="nav-item">
-            <span class="nav-icon">❤️</span> <span>Favorites</span>
+            <span class="nav-icon">❤️</span>
+            <span>Favorites</span>
         </a>
-        <div class="sidebar-title">More</div>
+
+
+        <div class="sidebar-title">
+            More
+        </div>
+
+
         <a href="settings.html" class="nav-item">
-            <span class="nav-icon">⚙️</span> <span>Settings</span>
+            <span class="nav-icon">⚙️</span>
+            <span>Settings</span>
         </a>
+
+
         <a href="about.html" class="nav-item">
-            <span class="nav-icon">ℹ️</span> <span>About</span>
+            <span class="nav-icon">ℹ️</span>
+            <span>About</span>
         </a>
+
 
         <!-- SOUND BUTTON -->
-        <button class="sound-control" id="soundControl">
-            <span id="soundIcon">🔊</span>
-            <span id="soundText">Sound On</span>
+
+        <button
+            class="sound-control"
+            id="soundControl"
+        >
+
+            <span id="soundIcon">
+                🔊
+            </span>
+
+            <span id="soundText">
+                Sound On
+            </span>
+
         </button>
 
+
+        <!-- SIDEBAR FOOTER -->
+
         <div class="sidebar-footer">
-            <strong>APEX GAMES</strong> <br> Play Pulse <br> Gaming Portal
-            <p style="font-size: 11px; margin-top: 10px; opacity: 0.6; font-family: sans-serif;">&copy; 2026 Apex Games. All Rights Reserved.</p>
+
+            <strong>
+                APEX GAMES
+            </strong>
+
+            <br>
+
+            Play Pulse
+
+            <br>
+
+            Gaming Portal
+
+            <p
+                style="
+                    font-size: 11px;
+                    margin-top: 10px;
+                    opacity: 0.6;
+                    font-family: sans-serif;
+                "
+            >
+                &copy; 2026 Apex Games.
+                All Rights Reserved.
+            </p>
+
         </div>
+
     </aside>
 
-    <!-- MAIN -->
+
+    <!-- =========================================
+         MAIN
+         ========================================= -->
+
     <main class="main-content">
+
         <section class="page home-page">
+
             <div class="home-wrapper">
-                <h1 class="home-logo">PLAY PULSE</h1>
+
+                <h1 class="home-logo">
+                    PLAY PULSE
+                </h1>
+
+
                 <div class="home-line"></div>
-                <div class="home-subtitle">Apex Games</div>
-                
-                <!-- UPDATE LOG -->
-                <div class="update-log">
-                    <div class="update-log-header">
-                        <h3>📝 Latest Update</h3>
-                        <span class="version">v0.1</span>
-                    </div>
-                    <ul>
-                        <li>Added separate website pages</li>
-                        <li>Added Play Pulse audio system</li>
-                        <li>Added navigation sounds</li>
-                        <li>Added game search foundation</li>
-                        <li>More games coming soon</li>
-                    </ul>
+
+
+                <div class="home-subtitle">
+                    Apex Games
                 </div>
+
+
+                <!-- =================================
+                     GET STARTED
+                     ================================= -->
+
+                <div class="home-start-section">
+
+                    <h2>
+                        Get Started
+                    </h2>
+
+
+                    <div class="home-start-buttons">
+
+                        <!-- GAMES -->
+
+                        <a
+                            href="games.html"
+                            class="home-start-button"
+                        >
+
+                            <span class="home-start-icon">
+                                🎮
+                            </span>
+
+                            <span class="home-start-content">
+
+                                <strong>
+                                    Games
+                                </strong>
+
+                                <small>
+                                    Browse the Play Pulse game library
+                                </small>
+
+                            </span>
+
+                        </a>
+
+
+                        <!-- POPULAR -->
+
+                        <a
+                            href="popular.html"
+                            class="home-start-button"
+                        >
+
+                            <span class="home-start-icon">
+                                🔥
+                            </span>
+
+                            <span class="home-start-content">
+
+                                <strong>
+                                    Popular
+                                </strong>
+
+                                <small>
+                                    See what's popular on Play Pulse
+                                </small>
+
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     UPDATE LOG BUTTON
+                     ================================= -->
+
+                <button
+                    class="home-update-button"
+                    id="openUpdateLog"
+                    type="button"
+                >
+
+                    <span class="home-update-left">
+
+                        <span class="home-update-icon">
+                            📝
+                        </span>
+
+                        <span>
+                            Update Log
+                        </span>
+
+                    </span>
+
+
+                    <span class="home-update-arrow">
+                        →
+                    </span>
+
+                </button>
+
             </div>
+
         </section>
+
     </main>
 
-    <footer>
-        <p>&copy; 2026 Apex Games. All Rights Reserved.</p>
-    </footer>
 
-    <!-- HIDDEN AUDIO TRACK (UPDATED PATH) -->
-    <audio id="bgMusic" loop>
-        <source src="audio/PlayPulseSoundtrack.mp3" type="audio/mpeg">
+    <!-- =========================================
+         UPDATE LOG MODAL
+         ========================================= -->
+
+    <div
+        class="update-modal"
+        id="updateModal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="update-modal-backdrop"
+            id="updateModalBackdrop"
+        ></div>
+
+
+        <div
+            class="update-modal-panel"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="updateModalTitle"
+        >
+
+            <!-- CLOSE BUTTON -->
+
+            <button
+                class="update-modal-close"
+                id="closeUpdateLog"
+                type="button"
+                aria-label="Close Update Log"
+            >
+
+                <span>
+                    ×
+                </span>
+
+            </button>
+
+
+            <!-- HEADER -->
+
+            <div class="update-modal-header">
+
+                <div>
+
+                    <span class="update-modal-label">
+                        PLAY PULSE
+                    </span>
+
+                    <h2 id="updateModalTitle">
+                        Update Log
+                    </h2>
+
+                    <p>
+                        What's new in Play Pulse.
+                    </p>
+
+                </div>
+
+
+                <span class="update-modal-version">
+                    v.01
+                </span>
+
+            </div>
+
+
+            <!-- UPDATE CONTENT -->
+
+            <div class="update-modal-content">
+
+                <div class="update-entry">
+
+                    <div class="update-entry-header">
+
+                        <h3>
+                            Play Pulse v.01
+                        </h3>
+
+                        <span>
+                            Current
+                        </span>
+
+                    </div>
+
+
+                    <ul>
+
+                        <li>
+                            Added separate Play Pulse pages
+                        </li>
+
+                        <li>
+                            Added the Play Pulse game library
+                        </li>
+
+                        <li>
+                            Added Favorites
+                        </li>
+
+                        <li>
+                            Added Recently Played foundation
+                        </li>
+
+                        <li>
+                            Added customizable Settings
+                        </li>
+
+                        <li>
+                            Added the About page
+                        </li>
+
+                        <li>
+                            Added the animated Play Pulse background
+                        </li>
+
+                        <li>
+                            Added the Play Pulse sound system
+                        </li>
+
+                        <li>
+                            Added the Get Started Home section
+                        </li>
+
+                        <li>
+                            More games and features coming soon
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="update-modal-footer">
+
+                    <span>
+                        More updates coming soon.
+                    </span>
+
+                    <strong>
+                        APEX GAMES
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         BACKGROUND MUSIC
+         ========================================= -->
+
+    <audio
+        id="bgMusic"
+        loop
+    >
+
+        <source
+            src="audio/PlayPulseSoundtrack.mp3"
+            type="audio/mpeg"
+        >
+
     </audio>
 
-  <!-- AUDIO TRACKER -->
-<audio id="bgMusic" loop>
-  <source src="audio/PlayPulseSoundtrack.mp3" type="audio/mpeg">
-</audio>
 
-<!-- MUSIC CONTROLLER WITH MEMORY -->
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const music = document.getElementById("bgMusic");
-    const toggleBtn = document.getElementById("soundControl");
-    const soundIcon = document.getElementById("soundIcon");
-    const soundText = document.getElementById("soundText");
+    <!-- =========================================
+         UPDATE LOG SCRIPT
+         ========================================= -->
 
-    // 1. Sync saved track position and state
-    const savedTime = localStorage.getItem("musicTime");
-    const isMusicPlaying = localStorage.getItem("musicPlaying") === "true";
+    <script>
 
-    if (music) {
-      if (savedTime) {
-        music.currentTime = parseFloat(savedTime);
-      }
-      
-      // Auto-resume if it was active on the previous page
-      if (isMusicPlaying) {
-        music.play().then(() => {
-          updateUI(true);
-        }).catch(() => {
-          localStorage.setItem("musicPlaying", "false");
-          updateUI(false);
-        });
-      } else {
-        updateUI(false);
-      }
-    }
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
 
-    // Swapped Visual UI definitions to match your layout state
-    function updateUI(playing) {
-      if (!soundIcon || !soundText) return;
-      soundIcon.textContent = playing ? "⏸️" : "🔊";
-      soundText.textContent = playing ? "Sound Off" : "Sound On";
-    }
+                const modal =
+                    document.getElementById(
+                        "updateModal"
+                    );
 
-    // 2. Click Handler - Fixed Inverse Direction Clashes
-    if (toggleBtn && music) {
-      toggleBtn.addEventListener("click", () => {
-        // If it is paused, click means turn it ON
-        if (music.paused) {
-          music.play();
-          localStorage.setItem("musicPlaying", "true");
-          updateUI(true);
-        } else {
-          // If it is playing, click means turn it OFF
-          music.pause();
-          localStorage.setItem("musicPlaying", "false");
-          updateUI(false);
-        }
-      });
-    }
+                const openButton =
+                    document.getElementById(
+                        "openUpdateLog"
+                    );
 
-    // 3. Track time location smoothly
-    setInterval(() => {
-      if (music && !music.paused) {
-        localStorage.setItem("musicTime", music.currentTime);
-      }
-    }, 500);
-  });
-</script>
+                const closeButton =
+                    document.getElementById(
+                        "closeUpdateLog"
+                    );
+
+                const backdrop =
+                    document.getElementById(
+                        "updateModalBackdrop"
+                    );
 
 
-    <!-- YOUR EXTERNAL SCRIPT -->
+                function openUpdateModal() {
+
+                    if (!modal) return;
+
+                    modal.classList.add(
+                        "open"
+                    );
+
+                    modal.setAttribute(
+                        "aria-hidden",
+                        "false"
+                    );
+
+                    document.body.classList.add(
+                        "modal-open"
+                    );
+
+                }
+
+
+                function closeUpdateModal() {
+
+                    if (!modal) return;
+
+                    modal.classList.remove(
+                        "open"
+                    );
+
+                    modal.setAttribute(
+                        "aria-hidden",
+                        "true"
+                    );
+
+                    document.body.classList.remove(
+                        "modal-open"
+                    );
+
+                }
+
+
+                if (openButton) {
+
+                    openButton.addEventListener(
+                        "click",
+                        openUpdateModal
+                    );
+
+                }
+
+
+                if (closeButton) {
+
+                    closeButton.addEventListener(
+                        "click",
+                        closeUpdateModal
+                    );
+
+                }
+
+
+                if (backdrop) {
+
+                    backdrop.addEventListener(
+                        "click",
+                        closeUpdateModal
+                    );
+
+                }
+
+
+                document.addEventListener(
+                    "keydown",
+                    event => {
+
+                        if (
+                            event.key === "Escape"
+                        ) {
+
+                            closeUpdateModal();
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+    </script>
+
+
+    <!-- =========================================
+         MAIN PLAY PULSE SCRIPT
+         ========================================= -->
+
     <script src="script.js"></script>
+
 </body>
+
 </html>
-
-
