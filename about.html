@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,136 +8,136 @@
     <title>About • Play Pulse</title>
 
     <link rel="stylesheet" href="style.css">
-
-    <style>
-        .about-page {
-            padding: 30px;
-            max-width: 900px;
-        }
-
-        .about-header {
-            margin-bottom: 30px;
-        }
-
-        .about-header h1 {
-            margin: 0;
-            font-size: 32px;
-        }
-
-        .about-header p {
-            margin-top: 8px;
-            color: #8d96a8;
-        }
-
-        .about-card {
-            background: rgba(20, 27, 40, 0.8);
-            border: 1px solid rgba(80, 140, 255, 0.18);
-            border-radius: 14px;
-            padding: 25px;
-            margin-bottom: 20px;
-        }
-
-        .about-card h2 {
-            margin-top: 0;
-            margin-bottom: 12px;
-            font-size: 19px;
-        }
-
-        .about-card p {
-            color: #9aa4b5;
-            line-height: 1.7;
-            margin-bottom: 0;
-        }
-
-        .version-box {
-            display: inline-block;
-            background: rgba(60, 110, 220, 0.15);
-            border: 1px solid rgba(80, 140, 255, 0.3);
-            color: #7eafff;
-            padding: 8px 13px;
-            border-radius: 8px;
-            font-size: 13px;
-            margin-top: 15px;
-        }
-
-        .feature-list {
-            margin: 0;
-            padding-left: 20px;
-            color: #9aa4b5;
-            line-height: 2;
-        }
-
-        .about-footer {
-            color: #626b7c;
-            font-size: 12px;
-            margin-top: 25px;
-        }
-    </style>
 </head>
 
 <body>
 
-    <aside class="sidebar">
+    <!-- BACKGROUND -->
+    <div class="animated-background">
 
-        <div class="sidebar-logo">
-            <h2>PLAY PULSE</h2>
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+        <div class="glow glow-3"></div>
+
+        <div class="particles">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
 
-        <nav>
+    </div>
 
-            <a href="index.html" class="nav-item">
-                🏠
-                <span>Home</span>
-            </a>
 
-            <a href="games.html" class="nav-item">
-                🎮
-                <span>Games</span>
-            </a>
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
 
-            <a href="#" class="nav-item">
-                ⭐
-                <span>Featured</span>
-            </a>
+        <div class="logo">
+            <h2>PLAY PULSE</h2>
+            <span>Apex Games</span>
+        </div>
 
-            <a href="#" class="nav-item">
-                ❤️
-                <span>Favorites</span>
-            </a>
+        <div class="sidebar-title">Main</div>
 
-            <a href="settings.html" class="nav-item">
-                ⚙️
-                <span>Settings</span>
-            </a>
+        <a href="index.html" class="nav-item">
+            <span class="nav-icon">🏠</span>
+            <span>Home</span>
+        </a>
 
-            <a href="about.html" class="nav-item active">
-                ℹ️
-                <span>About</span>
-            </a>
+        <a href="games.html" class="nav-item">
+            <span class="nav-icon">🎮</span>
+            <span>Games</span>
+        </a>
 
-        </nav>
+        <a href="featured.html" class="nav-item">
+            <span class="nav-icon">⭐</span>
+            <span>Featured</span>
+        </a>
+
+        <a href="popular.html" class="nav-item">
+            <span class="nav-icon">🔥</span>
+            <span>Popular</span>
+        </a>
+
+
+        <div class="sidebar-title">Library</div>
+
+        <a href="recent.html" class="nav-item">
+            <span class="nav-icon">🕘</span>
+            <span>Recently Played</span>
+        </a>
+
+        <a href="favorites.html" class="nav-item">
+            <span class="nav-icon">❤️</span>
+            <span>Favorites</span>
+        </a>
+
+
+        <div class="sidebar-title">More</div>
+
+        <a href="settings.html" class="nav-item">
+            <span class="nav-icon">⚙️</span>
+            <span>Settings</span>
+        </a>
+
+        <a href="about.html" class="nav-item active">
+            <span class="nav-icon">ℹ️</span>
+            <span>About</span>
+        </a>
+
+
+        <button class="sound-control" id="soundControl">
+            <span id="soundIcon">🔊</span>
+            <span id="soundText">Sound On</span>
+        </button>
+
+
+        <div class="sidebar-footer">
+            <strong>APEX GAMES</strong>
+            <br>
+            Play Pulse
+            <br>
+            Gaming Portal
+        </div>
 
     </aside>
 
 
+    <!-- MAIN -->
     <main class="main-content">
 
-        <section class="about-page">
+        <section class="page about-page">
 
-            <div class="about-header">
-                <h1>About Play Pulse</h1>
-                <p>Your gaming hub.</p>
+            <div class="page-header">
+
+                <h1>
+                    About Play Pulse
+                </h1>
+
+                <p>
+                    Your gaming hub.
+                </p>
+
             </div>
 
 
             <div class="about-card">
 
-                <h2>🎮 What is Play Pulse?</h2>
+                <h2>
+                    🎮 What is Play Pulse?
+                </h2>
 
                 <p>
-                    Play Pulse is a gaming website designed to bring
-                    games, favorites, featured content, and more together
-                    in one simple and easy-to-use place.
+                    Play Pulse is a gaming website designed
+                    to bring games, favorites, featured
+                    content, and more together in one simple
+                    and easy-to-use place.
                 </p>
 
                 <div class="version-box">
@@ -148,15 +149,36 @@
 
             <div class="about-card">
 
-                <h2>✨ Features</h2>
+                <h2>
+                    ✨ Features
+                </h2>
 
                 <ul class="feature-list">
-                    <li>🎮 Game library</li>
-                    <li>⭐ Featured games</li>
-                    <li>❤️ Favorite games</li>
-                    <li>⚙️ Customizable settings</li>
-                    <li>🌙 Dark gaming-focused interface</li>
-                    <li>🚀 More features coming soon</li>
+
+                    <li>
+                        🎮 Game library
+                    </li>
+
+                    <li>
+                        ⭐ Featured games
+                    </li>
+
+                    <li>
+                        ❤️ Favorite games
+                    </li>
+
+                    <li>
+                        ⚙️ Customizable settings
+                    </li>
+
+                    <li>
+                        🌙 Dark gaming-focused interface
+                    </li>
+
+                    <li>
+                        🚀 More features coming soon
+                    </li>
+
                 </ul>
 
             </div>
@@ -164,12 +186,14 @@
 
             <div class="about-card">
 
-                <h2>🚀 What's Next?</h2>
+                <h2>
+                    🚀 What's Next?
+                </h2>
 
                 <p>
-                    Play Pulse is still being developed. More games,
-                    features, improvements, and updates will be added
-                    over time.
+                    Play Pulse is still being developed.
+                    More games, features, improvements,
+                    and updates will be added over time.
                 </p>
 
             </div>
@@ -177,90 +201,29 @@
 
             <div class="about-card">
 
-                <h2>💙 Thanks for Playing</h2>
+                <h2>
+                    💙 Thanks for Playing
+                </h2>
 
                 <p>
-                    Thanks for checking out Play Pulse. Keep an eye out
-                    for future updates!
+                    Thanks for checking out Play Pulse.
+                    Keep an eye out for future updates!
                 </p>
 
             </div>
 
 
             <div class="about-footer">
-                Play Pulse • About
+                Play Pulse • v.01
             </div>
 
         </section>
 
     </main>
 
+
+    <script src="script.js"></script>
+
 </body>
+
 </html>
-<!-- AUDIO TRACKER -->
-<audio id="bgMusic" loop>
-  <source src="audio/PlayPulseSoundtrack.mp3" type="audio/mpeg">
-</audio>
-
-<!-- MUSIC CONTROLLER WITH MEMORY -->
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const music = document.getElementById("bgMusic");
-    const toggleBtn = document.getElementById("soundControl");
-    const soundIcon = document.getElementById("soundIcon");
-    const soundText = document.getElementById("soundText");
-
-    // 1. Sync saved track position and state
-    const savedTime = localStorage.getItem("musicTime");
-    const isMusicPlaying = localStorage.getItem("musicPlaying") === "true";
-
-    if (music) {
-      if (savedTime) {
-        music.currentTime = parseFloat(savedTime);
-      }
-      
-      // Auto-resume if it was active on the previous page
-      if (isMusicPlaying) {
-        music.play().then(() => {
-          updateUI(true);
-        }).catch(() => {
-          localStorage.setItem("musicPlaying", "false");
-          updateUI(false);
-        });
-      } else {
-        updateUI(false);
-      }
-    }
-
-    // Swapped Visual UI definitions to match your layout state
-    function updateUI(playing) {
-      if (!soundIcon || !soundText) return;
-      soundIcon.textContent = playing ? "⏸️" : "🔊";
-      soundText.textContent = playing ? "Sound Off" : "Sound On";
-    }
-
-    // 2. Click Handler - Fixed Inverse Direction Clashes
-    if (toggleBtn && music) {
-      toggleBtn.addEventListener("click", () => {
-        // If it is paused, click means turn it ON
-        if (music.paused) {
-          music.play();
-          localStorage.setItem("musicPlaying", "true");
-          updateUI(true);
-        } else {
-          // If it is playing, click means turn it OFF
-          music.pause();
-          localStorage.setItem("musicPlaying", "false");
-          updateUI(false);
-        }
-      });
-    }
-
-    // 3. Track time location smoothly
-    setInterval(() => {
-      if (music && !music.paused) {
-        localStorage.setItem("musicTime", music.currentTime);
-      }
-    }, 500);
-  });
-</script>
