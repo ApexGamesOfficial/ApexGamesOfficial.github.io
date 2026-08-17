@@ -3812,3 +3812,222 @@ body.modal-open {
     transform:
         translateY(-50%) scale(1.08);
 }
+/* =========================================
+   PLAY PULSE — FINAL GAMES SEARCH DESIGN
+   ========================================= */
+
+.game-search {
+    position: relative;
+
+    width: min(620px, 100%);
+
+    /* LEFT ALIGNED */
+    margin: 28px 0 44px 0;
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* MAGNIFYING GLASS */
+
+.game-search-icon {
+    position: absolute;
+
+    left: 16px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 16px;
+
+    opacity: 0.65;
+
+    pointer-events: none;
+
+    z-index: 3;
+}
+
+
+/* SEARCH FIELD */
+
+.game-search input {
+    width: 100%;
+    height: 46px;
+
+    box-sizing: border-box;
+
+    padding: 0 46px 0 45px;
+
+    border: 1px solid rgba(77, 163, 255, 0.22);
+
+    border-radius: 13px;
+
+    outline: none;
+
+    background: rgba(15, 35, 65, 0.60);
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 7px 22px rgba(0, 0, 0, 0.14);
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.game-search input::placeholder {
+    color: rgba(255, 255, 255, 0.42);
+}
+
+
+.game-search input:focus {
+    border-color: rgba(77, 163, 255, 0.55);
+
+    background: rgba(18, 43, 75, 0.72);
+
+    box-shadow:
+        0 7px 25px rgba(0, 0, 0, 0.17),
+        0 0 18px rgba(77, 163, 255, 0.08);
+}
+
+
+/* =========================================
+   CLEAR BUTTON
+   ========================================= */
+
+.game-search-clear {
+    position: absolute;
+
+    right: 10px;
+    top: 50%;
+
+    width: 27px;
+    height: 27px;
+
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    color: rgba(255, 255, 255, 0.75);
+
+    cursor: pointer;
+
+    font-family: inherit;
+    font-size: 18px;
+    line-height: 1;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/* FORCE X TO BE COMPLETELY HIDDEN */
+
+.game-search-clear[hidden] {
+    display: none !important;
+}
+
+
+.game-search-clear:hover {
+    background: rgba(77, 163, 255, 0.18);
+
+    transform:
+        translateY(-50%) scale(1.08);
+}
+
+
+/* =========================================
+   GAME GRID SPACING
+   ========================================= */
+
+.game-grid {
+    margin-top: 0;
+}
+
+
+/* =========================================
+   NO RESULTS
+   ========================================= */
+
+.no-games-found {
+    width: min(460px, 90%);
+
+    margin: 42px auto;
+
+    padding: 30px 24px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    background: rgba(15, 35, 65, 0.58);
+
+    border:
+        1px solid rgba(77, 163, 255, 0.16);
+
+    border-radius: 17px;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+
+.no-games-found[hidden] {
+    display: none !important;
+}
+
+
+.no-games-icon {
+    margin-bottom: 9px;
+
+    font-size: 28px;
+
+    opacity: 0.65;
+}
+
+
+.no-games-found h2 {
+    margin: 0 0 7px;
+
+    color: #ffffff;
+
+    font-size: 18px;
+}
+
+
+.no-games-found p {
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.48);
+
+    font-size: 13px;
+}
