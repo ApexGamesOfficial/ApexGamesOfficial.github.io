@@ -3282,3 +3282,196 @@ body.modal-open {
     }
 
 }
+/* =========================================
+   PLAY PULSE GAME SEARCH
+   ========================================= */
+
+.game-search {
+    position: relative;
+
+    width: min(700px, 100%);
+
+    margin: 0 auto 30px;
+
+    display: flex;
+    align-items: center;
+}
+
+
+.game-search-icon {
+    position: absolute;
+
+    left: 18px;
+
+    font-size: 17px;
+
+    opacity: 0.65;
+
+    pointer-events: none;
+}
+
+
+.game-search input {
+    width: 100%;
+    height: 52px;
+
+    box-sizing: border-box;
+
+    padding:
+        0 48px 0 48px;
+
+    border:
+        1px solid rgba(77, 163, 255, 0.2);
+
+    border-radius: 14px;
+
+    outline: none;
+
+    background:
+        rgba(15, 35, 65, 0.72);
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.14);
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.game-search input::placeholder {
+    color:
+        rgba(255, 255, 255, 0.45);
+}
+
+
+.game-search input:focus {
+    border-color:
+        rgba(77, 163, 255, 0.55);
+
+    background:
+        rgba(20, 45, 80, 0.8);
+
+    box-shadow:
+        0 8px 28px rgba(0, 0, 0, 0.18),
+        0 0 20px rgba(77, 163, 255, 0.08);
+}
+
+
+.game-search-clear {
+    position: absolute;
+
+    right: 12px;
+
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    font-size: 20px;
+    line-height: 1;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.game-search-clear:hover {
+    background:
+        rgba(255, 255, 255, 0.14);
+
+    transform: scale(1.08);
+}
+
+
+/* =========================================
+   NO SEARCH RESULTS
+   ========================================= */
+
+.no-games-found {
+    width: min(500px, 90%);
+
+    margin: 45px auto;
+
+    padding: 35px 25px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    background:
+        rgba(15, 35, 65, 0.62);
+
+    border:
+        1px solid rgba(77, 163, 255, 0.16);
+
+    border-radius: 18px;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+
+.no-games-icon {
+    margin-bottom: 10px;
+
+    font-size: 30px;
+
+    opacity: 0.7;
+}
+
+
+.no-games-found h2 {
+    margin: 0 0 7px;
+
+    color: #ffffff;
+
+    font-size: 19px;
+}
+
+
+.no-games-found p {
+    margin: 0;
+
+    color:
+        rgba(255, 255, 255, 0.5);
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   SEARCH RESPONSIVE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .game-search {
+        width: 100%;
+
+        margin-bottom: 24px;
+    }
+
+}
