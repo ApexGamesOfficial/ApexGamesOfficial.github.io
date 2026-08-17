@@ -5,26 +5,80 @@
 
 
 /* =========================================
-   STORAGE HELPERS
+   STORAGE
    ========================================= */
 
 function getStoredArray(key) {
+
     try {
-        const data = localStorage.getItem(key);
-        return data ? JSON.parse(data) : [];
+
+        const data =
+            localStorage.getItem(key);
+
+        return data
+            ? JSON.parse(data)
+            : [];
+
     } catch (error) {
-        console.warn(`Play Pulse: Could not read ${key}`, error);
+
+        console.warn(
+            `Play Pulse: Could not read ${key}`,
+            error
+        );
+
         return [];
+
     }
+
 }
 
 
 function saveStoredArray(key, array) {
+
     try {
-        localStorage.setItem(key, JSON.stringify(array));
+
+        localStorage.setItem(
+            key,
+            JSON.stringify(array)
+        );
+
     } catch (error) {
-        console.warn(`Play Pulse: Could not save ${key}`, error);
+
+        console.warn(
+            `Play Pulse: Could not save ${key}`,
+            error
+        );
+
     }
+
+}
+
+
+/* =========================================
+   SETTINGS STORAGE
+   ========================================= */
+
+function getSetting(key, fallback) {
+
+    const value =
+        localStorage.getItem(key);
+
+    if (value === null) {
+        return fallback;
+    }
+
+    return value;
+
+}
+
+
+function saveSetting(key, value) {
+
+    localStorage.setItem(
+        key,
+        value
+    );
+
 }
 
 
@@ -33,20 +87,32 @@ function saveStoredArray(key, array) {
    ========================================= */
 
 let soundEnabled =
-    localStorage.getItem("playPulseSound") !== "off";
+    getSetting(
+        "playPulseSound",
+        "on"
+    ) !== "off";
 
 
 const soundControl =
-    document.getElementById("soundControl");
+    document.getElementById(
+        "soundControl"
+    );
 
 const soundIcon =
-    document.getElementById("soundIcon");
+    document.getElementById(
+        "soundIcon"
+    );
 
 const soundText =
-    document.getElementById("soundText");
+    document.getElementById(
+        "soundText"
+    );
 
 
 function updateSoundButton() {
+
+    if (!soundControl) return;
+
 
     if (soundEnabled) {
 
@@ -69,19 +135,21 @@ function updateSoundButton() {
         }
 
     }
+
 }
 
 
-function toggleSound() {
+function setSoundEnabled(enabled) {
 
-    soundEnabled = !soundEnabled;
+    soundEnabled = enabled;
 
-    localStorage.setItem(
+    saveSetting(
         "playPulseSound",
-        soundEnabled ? "on" : "off"
+        enabled ? "on" : "off"
     );
 
     updateSoundButton();
+
 }
 
 
@@ -89,13 +157,258 @@ if (soundControl) {
 
     soundControl.addEventListener(
         "click",
-        toggleSound
+        () => {
+
+            setSoundEnabled(
+                !soundEnabled
+            );
+
+        }
     );
 
 }
 
 
 updateSoundButton();
+
+
+/* =========================================
+   THEME
+   ========================================= */
+
+function applyTheme(theme) {
+
+    document.documentElement
+        .setAttribute(
+            "data-theme",
+            theme
+        );
+
+
+    if (theme === "light") {
+
+        document.body.classList.add(
+            "light-theme"
+        );
+
+    } else {
+
+        document.body.classList.remove(
+            "light-theme"
+        );
+
+    }
+
+}
+
+
+function initializeTheme() {
+
+    const themeSelect =
+        document.getElementById(
+            "themeSetting"
+        );
+
+
+    const savedTheme =
+        getSetting(
+            "playPulseTheme",
+            "dark"
+        );
+
+
+    applyTheme(
+        savedTheme
+    );
+
+
+    if (!themeSelect) return;
+
+
+    themeSelect.value =
+        savedTheme;
+
+
+    themeSelect.addEventListener(
+        "change",
+        () => {
+
+            const theme =
+                themeSelect.value;
+
+            saveSetting(
+                "playPulseTheme",
+                theme
+            );
+
+            applyTheme(
+                theme
+            );
+
+        }
+    );
+
+}
+
+
+initializeTheme();
+
+
+/* =========================================
+   GAME ANIMATIONS
+   ========================================= */
+
+function applyAnimations(enabled) {
+
+    document.body.classList.toggle(
+        "animations-disabled",
+        !enabled
+    );
+
+}
+
+
+function initializeAnimations() {
+
+    const control =
+        document.getElementById(
+            "animationsSetting"
+        );
+
+
+    const saved =
+        getSetting(
+            "playPulseAnimations",
+            "on"
+        ) !== "off";
+
+
+    applyAnimations(
+        saved
+    );
+
+
+    if (!control) return;
+
+
+    control.checked =
+        saved;
+
+
+    control.addEventListener(
+        "change",
+        () => {
+
+            const enabled =
+                control.checked;
+
+            saveSetting(
+                "playPulseAnimations",
+                enabled
+                    ? "on"
+                    : "off"
+            );
+
+            applyAnimations(
+                enabled
+            );
+
+        }
+    );
+
+}
+
+
+initializeAnimations();
+
+
+/* =========================================
+   INTERFACE SOUNDS
+   ========================================= */
+
+function initializeInterfaceSounds() {
+
+    const control =
+        document.getElementById(
+            "interfaceSoundsSetting"
+        );
+
+
+    const saved =
+        getSetting(
+            "playPulseSound",
+            "on"
+        ) !== "off";
+
+
+    if (!control) return;
+
+
+    control.checked =
+        saved;
+
+
+    control.addEventListener(
+        "change",
+        () => {
+
+            setSoundEnabled(
+                control.checked
+            );
+
+        }
+    );
+
+}
+
+
+initializeInterfaceSounds();
+
+
+/* =========================================
+   AUTO FULLSCREEN
+   ========================================= */
+
+function initializeFullscreenSetting() {
+
+    const control =
+        document.getElementById(
+            "fullscreenSetting"
+        );
+
+
+    const saved =
+        getSetting(
+            "playPulseFullscreen",
+            "off"
+        ) === "on";
+
+
+    if (!control) return;
+
+
+    control.checked =
+        saved;
+
+
+    control.addEventListener(
+        "change",
+        () => {
+
+            saveSetting(
+                "playPulseFullscreen",
+                control.checked
+                    ? "on"
+                    : "off"
+            );
+
+        }
+    );
+
+}
+
+
+initializeFullscreenSetting();
 
 
 /* =========================================
@@ -128,11 +441,16 @@ function addFavorite(gameName) {
     const favorites =
         getFavorites();
 
+
     if (!favorites.includes(gameName)) {
 
-        favorites.push(gameName);
+        favorites.push(
+            gameName
+        );
 
-        saveFavorites(favorites);
+        saveFavorites(
+            favorites
+        );
 
     }
 
@@ -143,22 +461,26 @@ function removeFavorite(gameName) {
 
     if (!gameName) return;
 
+
     const favorites =
         getFavorites();
 
-    const updatedFavorites =
+
+    const updated =
         favorites.filter(
-            game => game !== gameName
+            game =>
+                game !== gameName
         );
 
-    saveFavorites(updatedFavorites);
+
+    saveFavorites(
+        updated
+    );
 
 }
 
 
 function isFavorite(gameName) {
-
-    if (!gameName) return false;
 
     return getFavorites().includes(
         gameName
@@ -168,15 +490,17 @@ function isFavorite(gameName) {
 
 
 /* =========================================
-   UPDATE FAVORITE BUTTON
+   FAVORITE BUTTONS
    ========================================= */
 
 function updateFavoriteButton(button) {
 
     if (!button) return;
 
+
     const gameName =
         button.dataset.favorite;
+
 
     if (!gameName) return;
 
@@ -187,11 +511,6 @@ function updateFavoriteButton(button) {
 
         button.classList.add(
             "favorited"
-        );
-
-        button.setAttribute(
-            "aria-label",
-            `Remove ${gameName} from favorites`
         );
 
         button.setAttribute(
@@ -208,11 +527,6 @@ function updateFavoriteButton(button) {
         );
 
         button.setAttribute(
-            "aria-label",
-            `Add ${gameName} to favorites`
-        );
-
-        button.setAttribute(
             "aria-pressed",
             "false"
         );
@@ -222,17 +536,17 @@ function updateFavoriteButton(button) {
 }
 
 
-/* =========================================
-   FAVORITE BUTTONS
-   ========================================= */
-
 function initializeFavoriteButtons() {
 
     document
-        .querySelectorAll(".favorite-button")
+        .querySelectorAll(
+            ".favorite-button"
+        )
         .forEach(button => {
 
-            updateFavoriteButton(button);
+            updateFavoriteButton(
+                button
+            );
 
 
             button.addEventListener(
@@ -242,19 +556,29 @@ function initializeFavoriteButtons() {
                     event.preventDefault();
                     event.stopPropagation();
 
+
                     const gameName =
                         button.dataset.favorite;
+
 
                     if (!gameName) return;
 
 
-                    if (isFavorite(gameName)) {
+                    if (
+                        isFavorite(
+                            gameName
+                        )
+                    ) {
 
-                        removeFavorite(gameName);
+                        removeFavorite(
+                            gameName
+                        );
 
                     } else {
 
-                        addFavorite(gameName);
+                        addFavorite(
+                            gameName
+                        );
 
                     }
 
@@ -263,8 +587,6 @@ function initializeFavoriteButtons() {
                         button
                     );
 
-
-                    /* Favorite animation */
 
                     button.classList.remove(
                         "favorite-pop"
@@ -304,26 +626,22 @@ function addRecentlyPlayed(gameName) {
 
     if (!gameName) return;
 
+
     let recent =
         getRecentlyPlayed();
 
 
-    /* Remove duplicate */
-
     recent =
         recent.filter(
-            game => game !== gameName
+            game =>
+                game !== gameName
         );
 
-
-    /* Put newest game first */
 
     recent.unshift(
         gameName
     );
 
-
-    /* Keep latest 10 */
 
     recent =
         recent.slice(0, 10);
@@ -341,54 +659,44 @@ function addRecentlyPlayed(gameName) {
    GAME BUTTONS
    ========================================= */
 
-function initializeGameButtons() {
+document
+    .querySelectorAll(
+        "[data-game]"
+    )
+    .forEach(button => {
 
-    document
-        .querySelectorAll("[data-game]")
-        .forEach(button => {
+        button.addEventListener(
+            "click",
+            () => {
 
-            button.addEventListener(
-                "click",
-                event => {
-
-                    /*
-                     * Favorite buttons may also be
-                     * inside a game card, so don't
-                     * treat them as a game launch.
-                     */
-
-                    if (
-                        button.classList.contains(
-                            "favorite-button"
-                        )
-                    ) {
-                        return;
-                    }
-
-
-                    const gameName =
-                        button.dataset.game;
-
-                    if (!gameName) return;
-
-
-                    addRecentlyPlayed(
-                        gameName
-                    );
-
+                if (
+                    button.classList.contains(
+                        "favorite-button"
+                    )
+                ) {
+                    return;
                 }
-            );
-
-        });
-
-}
 
 
-initializeGameButtons();
+                const gameName =
+                    button.dataset.game;
+
+
+                if (!gameName) return;
+
+
+                addRecentlyPlayed(
+                    gameName
+                );
+
+            }
+        );
+
+    });
 
 
 /* =========================================
-   GAME SEARCH FOUNDATION
+   SEARCH FOUNDATION
    ========================================= */
 
 function initializeGameSearch() {
@@ -399,12 +707,10 @@ function initializeGameSearch() {
         );
 
 
-    if (!searchInput) {
-        return;
-    }
+    if (!searchInput) return;
 
 
-    const gameCards =
+    const cards =
         document.querySelectorAll(
             ".game-card"
         );
@@ -414,27 +720,23 @@ function initializeGameSearch() {
         "input",
         () => {
 
-            const searchTerm =
+            const term =
                 searchInput.value
                     .trim()
                     .toLowerCase();
 
 
-            gameCards.forEach(card => {
+            cards.forEach(card => {
 
                 const text =
                     card.textContent
                         .toLowerCase();
 
 
-                const matches =
-                    text.includes(
-                        searchTerm
-                    );
-
-
                 card.style.display =
-                    matches ? "" : "none";
+                    text.includes(term)
+                        ? ""
+                        : "none";
 
             });
 
@@ -451,41 +753,36 @@ initializeGameSearch();
    NAVIGATION
    ========================================= */
 
-function initializeNavigation() {
+document
+    .querySelectorAll(
+        ".nav-item"
+    )
+    .forEach(item => {
 
-    document
-        .querySelectorAll(".nav-item")
-        .forEach(item => {
+        item.addEventListener(
+            "click",
+            () => {
 
-            item.addEventListener(
-                "click",
-                () => {
-
-                    document.body.classList.add(
-                        "page-changing"
-                    );
-
-
-                    setTimeout(
-                        () => {
-
-                            document.body.classList.remove(
-                                "page-changing"
-                            );
-
-                        },
-                        300
-                    );
-
-                }
-            );
-
-        });
-
-}
+                document.body.classList.add(
+                    "page-changing"
+                );
 
 
-initializeNavigation();
+                setTimeout(
+                    () => {
+
+                        document.body.classList.remove(
+                            "page-changing"
+                        );
+
+                    },
+                    300
+                );
+
+            }
+        );
+
+    });
 
 
 /* =========================================
@@ -502,15 +799,21 @@ function setActiveNavigation() {
 
 
     document
-        .querySelectorAll(".nav-item")
+        .querySelectorAll(
+            ".nav-item"
+        )
         .forEach(item => {
 
             const link =
-                item.getAttribute("href");
+                item.getAttribute(
+                    "href"
+                );
+
 
             if (!link) return;
 
-            const linkPage =
+
+            const page =
                 link
                     .split("/")
                     .pop()
@@ -519,7 +822,7 @@ function setActiveNavigation() {
 
 
             if (
-                linkPage === currentPage
+                page === currentPage
             ) {
 
                 item.classList.add(
@@ -550,7 +853,8 @@ function initializePage() {
 
 
 if (
-    document.readyState === "loading"
+    document.readyState ===
+    "loading"
 ) {
 
     document.addEventListener(
@@ -564,10 +868,6 @@ if (
 
 }
 
-
-/* =========================================
-   PLAY PULSE READY
-   ========================================= */
 
 console.log(
     "Play Pulse v.01 loaded successfully."
