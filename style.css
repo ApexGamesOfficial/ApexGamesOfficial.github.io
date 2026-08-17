@@ -1990,3 +1990,16 @@ button.favorite-button.favorite-pop {
 
     font-size: 12px;
 }
+/* =========================================
+   ABOUT PAGE - FINAL CARD LAYER
+   ========================================= */
+
+.about-page {
+    position: relative;
+    z-index: 1;
+}
+
+.about-card {
+    position: relative;
+    z-index: 2;
+}
