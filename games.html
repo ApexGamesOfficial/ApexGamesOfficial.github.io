@@ -2,31 +2,17 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Games • Play Pulse</title>
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
-
+    <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
-
-    <!-- =========================================
-         BACKGROUND
-         ========================================= -->
-
+    <!-- BACKGROUND -->
     <div class="animated-background">
 
         <div class="glow glow-1"></div>
@@ -34,7 +20,6 @@
         <div class="glow glow-3"></div>
 
         <div class="particles">
-
             <span></span>
             <span></span>
             <span></span>
@@ -45,239 +30,93 @@
             <span></span>
             <span></span>
             <span></span>
-
         </div>
 
     </div>
 
 
-
-    <!-- =========================================
-         SIDEBAR
-         ========================================= -->
-
+    <!-- SIDEBAR -->
     <aside class="sidebar">
 
-
         <div class="logo">
-
-            <h2>
-                PLAY PULSE
-            </h2>
-
-            <span>
-                Apex Games
-            </span>
-
+            <h2>PLAY PULSE</h2>
+            <span>Apex Games</span>
         </div>
 
+        <div class="sidebar-title">Main</div>
 
+        <a href="index.html" class="nav-item">
+            <span class="nav-icon">🏠</span>
+            <span>Home</span>
+        </a>
 
-        <div class="sidebar-title">
-            Main
-        </div>
+        <a href="games.html" class="nav-item active">
+            <span class="nav-icon">🎮</span>
+            <span>Games</span>
+        </a>
 
+        <a href="featured.html" class="nav-item">
+            <span class="nav-icon">⭐</span>
+            <span>Featured</span>
+        </a>
 
-        <a
-            href="index.html"
-            class="nav-item"
-        >
-
-            <span class="nav-icon">
-                🏠
-            </span>
-
-            <span>
-                Home
-            </span>
-
+        <a href="popular.html" class="nav-item">
+            <span class="nav-icon">🔥</span>
+            <span>Popular</span>
         </a>
 
 
-        <a
-            href="games.html"
-            class="nav-item active"
-        >
+        <div class="sidebar-title">Library</div>
 
-            <span class="nav-icon">
-                🎮
-            </span>
+        <a href="recent.html" class="nav-item">
+            <span class="nav-icon">🕘</span>
+            <span>Recently Played</span>
+        </a>
 
-            <span>
-                Games
-            </span>
-
+        <a href="favorites.html" class="nav-item">
+            <span class="nav-icon">❤️</span>
+            <span>Favorites</span>
         </a>
 
 
-        <a
-            href="featured.html"
-            class="nav-item"
-        >
+        <div class="sidebar-title">More</div>
 
-            <span class="nav-icon">
-                ⭐
-            </span>
+        <a href="settings.html" class="nav-item">
+            <span class="nav-icon">⚙️</span>
+            <span>Settings</span>
+        </a>
 
-            <span>
-                Featured
-            </span>
-
+        <a href="about.html" class="nav-item">
+            <span class="nav-icon">ℹ️</span>
+            <span>About</span>
         </a>
 
 
-        <a
-            href="popular.html"
-            class="nav-item"
-        >
-
-            <span class="nav-icon">
-                🔥
-            </span>
-
-            <span>
-                Popular
-            </span>
-
-        </a>
-
-
-
-        <div class="sidebar-title">
-            Library
-        </div>
-
-
-        <a
-            href="recent.html"
-            class="nav-item"
-        >
-
-            <span class="nav-icon">
-                🕘
-            </span>
-
-            <span>
-                Recently Played
-            </span>
-
-        </a>
-
-
-        <a
-            href="favorites.html"
-            class="nav-item"
-        >
-
-            <span class="nav-icon">
-                ❤️
-            </span>
-
-            <span>
-                Favorites
-            </span>
-
-        </a>
-
-
-
-        <div class="sidebar-title">
-            More
-        </div>
-
-
-        <a
-            href="settings.html"
-            class="nav-item"
-        >
-
-            <span class="nav-icon">
-                ⚙️
-            </span>
-
-            <span>
-                Settings
-            </span>
-
-        </a>
-
-
-        <a
-            href="about.html"
-            class="nav-item"
-        >
-
-            <span class="nav-icon">
-                ℹ️
-            </span>
-
-            <span>
-                About
-            </span>
-
-        </a>
-
-
-
-        <!-- SOUND -->
-
-        <button
-            class="sound-control"
-            id="soundControl"
-        >
-
-            <span id="soundIcon">
-                🔊
-            </span>
-
-            <span id="soundText">
-                Sound On
-            </span>
-
+        <button class="sound-control" id="soundControl">
+            <span id="soundIcon">🔊</span>
+            <span id="soundText">Sound On</span>
         </button>
 
 
-
-        <!-- SIDEBAR FOOTER -->
-
         <div class="sidebar-footer">
-
-            <strong>
-                APEX GAMES
-            </strong>
-
+            <strong>APEX GAMES</strong>
             <br>
-
             Play Pulse
-
             <br>
-
             Gaming Portal
-
         </div>
-
 
     </aside>
 
 
-
-    <!-- =========================================
-         MAIN
-         ========================================= -->
-
+    <!-- MAIN -->
     <main class="main-content">
-
 
         <section class="page">
 
-
-            <!-- PAGE HEADER -->
-
             <div class="page-header">
 
-                <h1>
-                    Games
-                </h1>
+                <h1>Games</h1>
 
                 <p>
                     Browse the Play Pulse game library.
@@ -286,18 +125,9 @@
             </div>
 
 
+            <!-- SEARCH -->
 
-            <!-- =================================
-                 SEARCH
-                 ================================= -->
-
-            <div
-                class="game-search"
-                role="search"
-            >
-
-
-                <!-- MAGNIFYING GLASS -->
+            <div class="game-search">
 
                 <span
                     class="game-search-icon"
@@ -306,41 +136,29 @@
                     🔍
                 </span>
 
-
-
-                <!-- SEARCH INPUT -->
-
                 <input
-                    id="gameSearch"
                     type="search"
+                    id="gameSearch"
                     placeholder="Search games..."
                     autocomplete="off"
                     spellcheck="false"
                     aria-label="Search games"
                 >
 
-
-
-                <!-- CLEAR BUTTON -->
-
                 <button
+                    type="button"
                     id="clearGameSearch"
                     class="game-search-clear"
-                    type="button"
                     aria-label="Clear search"
                     hidden
                 >
                     ×
                 </button>
 
-
             </div>
 
 
-
-            <!-- =================================
-                 GAME GRID
-                 ================================= -->
+            <!-- GAME GRID -->
 
             <div
                 class="game-grid"
@@ -348,33 +166,27 @@
             >
 
 
-
-                <!-- =================================
-                     SPACE INVADERS
-                     ================================= -->
+                <!-- SPACE INVADERS -->
 
                 <div
                     class="game-card"
-                    data-game-search="space invaders classic arcade action"
+                    data-game-name="Space Invaders Classic"
+                    data-game-description="Classic arcade action."
                 >
 
                     <div class="game-icon">
                         👾
                     </div>
 
-
                     <h3>
                         Space Invaders Classic
                     </h3>
-
 
                     <p>
                         Classic arcade action.
                     </p>
 
-
                     <div class="game-actions">
-
 
                         <button
                             class="play-button"
@@ -382,7 +194,6 @@
                         >
                             Play
                         </button>
-
 
                         <button
                             class="favorite-button"
@@ -392,39 +203,32 @@
                             ♡
                         </button>
 
-
                     </div>
 
                 </div>
 
 
-
-                <!-- =================================
-                     RETRO SNAKE
-                     ================================= -->
+                <!-- RETRO SNAKE -->
 
                 <div
                     class="game-card"
-                    data-game-search="retro snake classic snake experience"
+                    data-game-name="Retro Snake"
+                    data-game-description="The classic Snake experience."
                 >
 
                     <div class="game-icon">
                         🐍
                     </div>
 
-
                     <h3>
                         Retro Snake
                     </h3>
-
 
                     <p>
                         The classic Snake experience.
                     </p>
 
-
                     <div class="game-actions">
-
 
                         <button
                             class="play-button"
@@ -432,7 +236,6 @@
                         >
                             Play
                         </button>
-
 
                         <button
                             class="favorite-button"
@@ -442,36 +245,30 @@
                             ♡
                         </button>
 
-
                     </div>
 
                 </div>
 
 
-
-                <!-- =================================
-                     COMING SOON
-                     ================================= -->
+                <!-- COMING SOON -->
 
                 <div
                     class="game-card"
-                    data-game-search="more games coming soon new games"
+                    data-game-name="More Games Coming Soon"
+                    data-game-description="New games will be added to Play Pulse."
                 >
 
                     <div class="game-icon">
                         🚀
                     </div>
 
-
                     <h3>
                         More Games Coming Soon
                     </h3>
 
-
                     <p>
                         New games will be added to Play Pulse.
                     </p>
-
 
                     <button
                         class="play-button"
@@ -482,14 +279,10 @@
 
                 </div>
 
-
             </div>
 
 
-
-            <!-- =================================
-                 NO RESULTS
-                 ================================= -->
+            <!-- NO RESULTS -->
 
             <div
                 class="no-games-found"
@@ -501,11 +294,9 @@
                     🔎
                 </div>
 
-
                 <h2>
                     No games found
                 </h2>
-
 
                 <p>
                     Try searching for a different game.
@@ -513,228 +304,180 @@
 
             </div>
 
-
         </section>
-
 
     </main>
 
 
-
-    <!-- =========================================
-         SEARCH SYSTEM
-         ========================================= -->
+    <!-- SEARCH SYSTEM -->
 
     <script>
 
-        document.addEventListener(
-            "DOMContentLoaded",
-            function () {
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const searchInput =
+                document.getElementById("gameSearch");
+
+            const clearButton =
+                document.getElementById("clearGameSearch");
+
+            const gameGrid =
+                document.getElementById("gameGrid");
+
+            const noGamesFound =
+                document.getElementById("noGamesFound");
 
 
-                const searchInput =
-                    document.getElementById(
-                        "gameSearch"
-                    );
+            if (!searchInput || !gameGrid) {
+                return;
+            }
 
 
-                const clearButton =
-                    document.getElementById(
-                        "clearGameSearch"
-                    );
-
-
-                const gameGrid =
-                    document.getElementById(
-                        "gameGrid"
-                    );
-
-
-                const noGamesFound =
-                    document.getElementById(
-                        "noGamesFound"
-                    );
-
-
-                if (
-                    !searchInput ||
-                    !gameGrid
-                ) {
-
-                    return;
-
-                }
-
-
-
-                const gameCards =
-                    Array.from(
-                        gameGrid.querySelectorAll(
-                            ".game-card"
-                        )
-                    );
-
-
-
-                function updateSearch() {
-
-
-                    const query =
-                        searchInput.value
-                            .trim()
-                            .toLowerCase();
-
-
-
-                    let visibleCount = 0;
-
-
-
-                    gameCards.forEach(
-                        function (card) {
-
-
-                            const searchableText =
-                                (
-                                    card.dataset.gameSearch ||
-                                    card.innerText ||
-                                    ""
-                                )
-                                .toLowerCase();
-
-
-
-                            const matches =
-                                query === "" ||
-                                searchableText.includes(
-                                    query
-                                );
-
-
-
-                            card.hidden =
-                                !matches;
-
-
-
-                            if (matches) {
-
-                                visibleCount++;
-
-                            }
-
-                        }
-                    );
-
-
-
-                    /*
-                     * X BUTTON
-                     *
-                     * Hidden when the search
-                     * field is empty.
-                     */
-
-                    clearButton.hidden =
-                        query === "";
-
-
-
-                    /*
-                     * NO RESULTS
-                     */
-
-                    noGamesFound.hidden =
-                        visibleCount !== 0;
-
-
-
-                }
-
-
-
-                /*
-                 * SEARCH WHILE TYPING
-                 */
-
-                searchInput.addEventListener(
-                    "input",
-                    updateSearch
+            const gameCards =
+                Array.from(
+                    gameGrid.querySelectorAll(".game-card")
                 );
 
 
+            function performSearch() {
 
-                /*
-                 * CLEAR SEARCH
-                 */
+                const query =
+                    searchInput.value
+                        .trim()
+                        .toLowerCase();
+
+
+                let numberVisible = 0;
+
+
+                gameCards.forEach(function (card) {
+
+                    const gameName =
+                        (
+                            card.getAttribute("data-game-name") || ""
+                        ).toLowerCase();
+
+                    const gameDescription =
+                        (
+                            card.getAttribute("data-game-description") || ""
+                        ).toLowerCase();
+
+
+                    const matches =
+                        query === "" ||
+                        gameName.includes(query) ||
+                        gameDescription.includes(query);
+
+
+                    if (matches) {
+
+                        card.style.display = "";
+
+                        numberVisible++;
+
+                    } else {
+
+                        card.style.display = "none";
+
+                    }
+
+                });
+
+
+                /* X BUTTON */
+
+                if (clearButton) {
+
+                    if (query.length > 0) {
+
+                        clearButton.hidden = false;
+
+                    } else {
+
+                        clearButton.hidden = true;
+
+                    }
+
+                }
+
+
+                /* NO RESULTS */
+
+                if (noGamesFound) {
+
+                    if (numberVisible === 0) {
+
+                        noGamesFound.hidden = false;
+
+                    } else {
+
+                        noGamesFound.hidden = true;
+
+                    }
+
+                }
+
+            }
+
+
+            /* SEARCH WHILE TYPING */
+
+            searchInput.addEventListener(
+                "input",
+                performSearch
+            );
+
+
+            /* CLEAR BUTTON */
+
+            if (clearButton) {
 
                 clearButton.addEventListener(
                     "click",
                     function () {
 
-
                         searchInput.value = "";
 
-
-                        updateSearch();
-
+                        performSearch();
 
                         searchInput.focus();
 
-
                     }
                 );
-
-
-
-                /*
-                 * ESCAPE CLEARS SEARCH
-                 */
-
-                searchInput.addEventListener(
-                    "keydown",
-                    function (event) {
-
-
-                        if (
-                            event.key === "Escape" &&
-                            searchInput.value !== ""
-                        ) {
-
-
-                            searchInput.value = "";
-
-
-                            updateSearch();
-
-
-                        }
-
-                    }
-                );
-
-
-
-                /*
-                 * INITIAL STATE
-                 */
-
-                updateSearch();
-
 
             }
-        );
+
+
+            /* ESCAPE */
+
+            searchInput.addEventListener(
+                "keydown",
+                function (event) {
+
+                    if (event.key === "Escape") {
+
+                        searchInput.value = "";
+
+                        performSearch();
+
+                    }
+
+                }
+            );
+
+
+            /* INITIAL STATE */
+
+            performSearch();
+
+        });
 
     </script>
 
 
-
-    <!-- =========================================
-         MAIN PLAY PULSE SCRIPT
-         ========================================= -->
+    <!-- MAIN PLAY PULSE SCRIPT -->
 
     <script src="script.js"></script>
-
 
 </body>
 
